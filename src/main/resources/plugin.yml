@@ -1,0 +1,4 @@
+name: RowCore
+version: '${project.version}'
+main: me.rownox.rowcore.RowCore
+api-version: 1.19

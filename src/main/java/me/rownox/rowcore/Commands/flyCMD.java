@@ -10,7 +10,6 @@ import static me.rownox.rowcore.Utils.playerUtils.checkPerms;
 public class flyCMD implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-
         if (sender instanceof Player p) {
             checkPerms(p, "rowcore.fly");
             p.setFlying(true);
@@ -18,4 +17,5 @@ public class flyCMD implements CommandExecutor {
 
         return false;
     }
+
 }

@@ -9,14 +9,17 @@ import org.bukkit.entity.Player;
 import static me.rownox.rowcore.utils.PlayerUtils.checkPerms;
 import static me.rownox.rowcore.utils.PlayerUtils.healPlr;
 
-public class FlyCMD implements CommandExecutor {
+public class HealCmd implements CommandExecutor {
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player p) { //sets the person who sent the command to the variable p if they are a player.
 
-            checkPerms(p, "rowcore.fly");
+            checkPerms(p, "rowcore.heal"); //check permissions
+
             if (args.length >= 1 && args[0] != null) { //check if they actually have another argument in the command
 
+                checkPerms(p, "rowcore.heal.others");
                 Player target = Bukkit.getPlayer(args[0]); //set the target variable to the first argument in the command
                 if (target != null) healPlr(target);
 

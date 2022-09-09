@@ -17,6 +17,7 @@
     </properties>
 
     <build>
+        <finalName>RowCore</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

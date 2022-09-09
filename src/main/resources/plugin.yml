@@ -2,3 +2,8 @@ name: RowCore
 version: '${project.version}'
 main: me.rownox.rowcore.RowCore
 api-version: 1.19
+
+commands:
+  heal:
+    usage: /heal <player>
+    description: "Replenish hearts and food of a user."

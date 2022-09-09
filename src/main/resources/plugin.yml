@@ -7,3 +7,6 @@ commands:
   heal:
     usage: /heal <player>
     description: "Replenish hearts and food of a user."
+  fly:
+    usage: /fly <player>
+    description: "Allow a player to fly."

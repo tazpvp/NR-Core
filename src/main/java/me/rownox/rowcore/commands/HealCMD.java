@@ -6,14 +6,13 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import static me.rownox.rowcore.utils.utilsPlayer.checkPerms;
-import static me.rownox.rowcore.utils.utilsPlayer.healPlr;
+import static me.rownox.rowcore.utils.PlayerUtils.checkPerms;
+import static me.rownox.rowcore.utils.PlayerUtils.healPlr;
 
-public class cmdHeal implements CommandExecutor {
+public class HealCMD implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-
         if (sender instanceof Player p) { //sets the person who sent the command to the variable p if they are a player.
 
             checkPerms(p, "rowcore.heal"); //check permissions

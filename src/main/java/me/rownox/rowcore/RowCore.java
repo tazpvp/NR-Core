@@ -14,7 +14,7 @@ public final class RowCore extends JavaPlugin {
         instance = this;
         registerCommands();
 
-        config.addDefault("No Permission:", " &cYou are missing the permission: ");
+        config.addDefault("No-Permission", " &cYou are missing the permission: ");
         config.options().copyDefaults(true);
         saveConfig();
     }
@@ -22,11 +22,11 @@ public final class RowCore extends JavaPlugin {
     @Override
     public void onDisable() {
 
-        this.saveDefaultConfig();
+        saveDefaultConfig();
     }
 
     public void registerCommands() { //makes sure the plugin knows about the command classes
-        this.getCommand("heal").setExecutor(new cmdHeal());
+        getCommand("heal").setExecutor(new cmdHeal());
     }
 
     public static RowCore getInstance(){

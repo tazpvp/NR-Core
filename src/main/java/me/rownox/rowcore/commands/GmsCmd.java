@@ -28,6 +28,7 @@ public class GmsCmd implements CommandExecutor {
                 p.setGameMode(GameMode.SURVIVAL);
 
             }
+            return true;
         }
         return false;
     }

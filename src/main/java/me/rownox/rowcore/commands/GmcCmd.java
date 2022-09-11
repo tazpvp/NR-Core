@@ -28,6 +28,7 @@ public class GmcCmd implements CommandExecutor {
                 p.setGameMode(GameMode.CREATIVE);
 
             }
+            return true;
         }
         return false;
     }

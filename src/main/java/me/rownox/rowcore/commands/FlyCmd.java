@@ -12,12 +12,13 @@ import static me.rownox.rowcore.utils.PlayerUtils.healPlr;
 public class FlyCmd implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (sender instanceof Player p) { //sets the person who sent the command to the variable p if they are a player.
+        if (sender instanceof Player p) {
 
-            checkPerms(p, "rowcore.fly");
-            if (args.length >= 1 && args[0] != null) { //check if they actually have another argument in the command
+            if (!checkPerms(p,"rowcore.fly")) return false;
 
-                Player target = Bukkit.getPlayer(args[0]); //set the target variable to the first argument in the command
+            if (args.length >= 1 && args[0] != null) {
+
+                Player target = Bukkit.getPlayer(args[0]);
                 if (target != null) healPlr(target);
 
             } else {

@@ -15,7 +15,7 @@ public class HealCmd implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player p) { //sets the person who sent the command to the variable p if they are a player.
 
-            checkPerms(p, "rowcore.heal"); //check permissions
+            if (!checkPerms(p,"rowcore.heal")) return false; //check permissions
 
             if (args.length >= 1 && args[0] != null) { //check if they actually have another argument in the command
 

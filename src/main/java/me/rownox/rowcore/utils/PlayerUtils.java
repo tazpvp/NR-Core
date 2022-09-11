@@ -19,14 +19,13 @@ public final class PlayerUtils {
      * @param p The targeted player
      * @param permission The permission you want to check for
      */
-    public static void checkPerms(final Player p, @Nullable final String permission) {
-        if (!p.hasPermission(permission != null ? permission : "rowcore.*")) return;
-        p.sendMessage(chat(CONFIG.getString("No-Permission") + permission));
-    }
-
-    public static void checkPerms(final Player p) {
-        if (!p.hasPermission("rowcore.*")) return;
-        p.sendMessage(translateAlternateColorCodes('&', CONFIG.getString("No-Permission") + "rowcore.*"));
+    public static boolean checkPerms(final Player p, @Nullable final String permission) {
+        if (p.isOp()) return true;
+        if (!p.hasPermission(permission != null ? permission : "rowcore.*") || !p.hasPermission("rowcore.*")) {
+            p.sendMessage(chat(CONFIG.getString("No-Permission") + permission));
+            return false;
+        }
+        return true;
     }
 
     /**

@@ -28,8 +28,7 @@ public final class RowCore extends JavaPlugin {
 
     @Override
     public void onDisable() {
-
-        saveDefaultConfig();
+        this.saveDefaultConfig();
     }
 
     public void registerCommands() { //makes sure the plugin knows about the command classes

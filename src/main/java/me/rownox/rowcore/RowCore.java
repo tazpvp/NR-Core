@@ -1,6 +1,8 @@
 package me.rownox.rowcore;
 
 import me.rownox.rowcore.commands.FlyCmd;
+import me.rownox.rowcore.commands.GmcCmd;
+import me.rownox.rowcore.commands.GmsCmd;
 import me.rownox.rowcore.commands.HealCmd;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -34,6 +36,9 @@ public final class RowCore extends JavaPlugin {
         Map<String, CommandExecutor> commands = new HashMap<>() {{
             put("heal", new HealCmd());
             put("fly", new FlyCmd());
+            put("gmc", new GmcCmd());
+            put("gms", new GmsCmd());
+
         }};
 
         for (Map.Entry<String, CommandExecutor> command : commands.entrySet()) {

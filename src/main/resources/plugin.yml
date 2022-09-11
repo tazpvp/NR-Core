@@ -10,3 +10,9 @@ commands:
   fly:
     usage: /fly <player>
     description: "Allow a player to fly."
+  gmc:
+    usage: /gmc <player>
+    description: "Put player in gmc"
+  gms:
+    usage: /gms <player>
+    description: "Put player in gms"

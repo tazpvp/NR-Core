@@ -10,6 +10,7 @@ import static me.rownox.rowcore.utils.ChatUtils.chat;
 public final class PlayerUtils {
 
     private static final FileConfiguration CONFIG = RowCore.getInstance().config;
+    private static final String prefix = "rowcore.";
 
     /**
      * Check if the player has the given permission or the absolute one.
@@ -18,7 +19,7 @@ public final class PlayerUtils {
      */
     public static boolean checkPerms(final Player p, final String permission) {
         if (p.isOp()) return true;
-        if (!p.hasPermission(permission) || !p.hasPermission("rowcore.*")) {
+        if (!p.hasPermission(permission) && !p.hasPermission("rowcore.*")) {
             p.sendMessage(chat(CONFIG.getString("No-Permission") + permission));
             return false;
         }

@@ -19,7 +19,7 @@ public final class PlayerUtils {
      */
     public static boolean checkPerms(final Player p, final String permission) {
         if (p.isOp()) return true;
-        if (!p.hasPermission(permission) && !p.hasPermission("rowcore.*")) {
+        if (!p.hasPermission(permission) && !p.hasPermission(prefix + "*")) {
             p.sendMessage(chat(CONFIG.getString("No-Permission") + permission));
             return false;
         }
@@ -32,8 +32,8 @@ public final class PlayerUtils {
      */
     public static boolean checkPerms(final Player p) {
         if (p.isOp()) return true;
-        if (!p.hasPermission("rowcore.*")) {
-            p.sendMessage(chat(CONFIG.getString("No-Permission") + "rowcore.*"));
+        if (!p.hasPermission(prefix + "*")) {
+            p.sendMessage(chat(CONFIG.getString("No-Permission") + prefix + "*"));
             return false;
         }
         return true;

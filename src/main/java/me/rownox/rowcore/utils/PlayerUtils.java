@@ -8,20 +8,21 @@ import org.bukkit.entity.Player;
 import javax.annotation.Nullable;
 
 import static me.rownox.rowcore.utils.ChatUtils.chat;
-import static org.bukkit.ChatColor.translateAlternateColorCodes;
 
 public final class PlayerUtils {
 
     private static final FileConfiguration CONFIG = RowCore.getInstance().config;
+    private static final String prefix = "rowcore.";
 
     /**
      * Check if the player has the given permission or the absolute one.
      * @param p The targeted player
      * @param permission The permission you want to check for
      */
-    public static boolean checkPerms(final Player p, @Nullable final String permission) {
+    public static boolean checkPerms(final Player p, @Nullable String permission) {
+        permission = prefix + permission;
         if (p.isOp()) return true;
-        if (!p.hasPermission(permission != null ? permission : "rowcore.*") || !p.hasPermission("rowcore.*")) {
+        if (!p.hasPermission(permission) && !p.hasPermission(prefix + "*")) {
             p.sendMessage(chat(CONFIG.getString("No-Permission") + permission));
             return false;
         }

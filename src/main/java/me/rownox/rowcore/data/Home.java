@@ -1,6 +1,7 @@
 package me.rownox.rowcore.data;
 
-import javax.xml.stream.Location;
+import org.bukkit.Location;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -23,7 +24,7 @@ public class Home {
         return uuid;
     }
 
-    public Map getHomes() {
+    public Map<String, Location> getHomes() {
         return homes;
     }
 

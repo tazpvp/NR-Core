@@ -18,3 +18,7 @@ commands:
     usage: /gma <player>
   gmsp:
     usage: /gmsp <player>
+  home:
+    usage: /home <name>
+  sethome:
+    usage: /sethome <name>

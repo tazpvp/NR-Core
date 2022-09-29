@@ -6,7 +6,7 @@ import java.util.UUID;
 
 public class HomesContainer {
 
-    private List<Home> homes;
+    public List<Home> homes;
 
     public HomesContainer() {
         homes = new ArrayList<>();

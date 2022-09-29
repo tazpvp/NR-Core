@@ -4,6 +4,8 @@ import com.google.gson.Gson;
 import me.rownox.rowcore.commands.FlyCmd;
 import me.rownox.rowcore.commands.GmCmd;
 import me.rownox.rowcore.commands.HealCmd;
+import me.rownox.rowcore.commands.home.HomeCmd;
+import me.rownox.rowcore.commands.home.SethomeCmd;
 import me.rownox.rowcore.data.HomesContainer;
 import org.bukkit.GameMode;
 import org.bukkit.command.CommandExecutor;
@@ -77,6 +79,8 @@ public final class RowCore extends JavaPlugin {
             put("gms", new GmCmd(GameMode.SURVIVAL));
             put("gma", new GmCmd(GameMode.ADVENTURE));
             put("gmsp", new GmCmd(GameMode.SPECTATOR));
+            put("home", new HomeCmd());
+            put("sethome", new SethomeCmd());
         }};
 
         for (Map.Entry<String, CommandExecutor> command : commands.entrySet()) {

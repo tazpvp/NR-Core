@@ -1,6 +1,7 @@
 package me.rownox.rowcore;
 
 import com.google.gson.Gson;
+import me.rownox.rowcore.commands.DebugCmd;
 import me.rownox.rowcore.commands.FlyCmd;
 import me.rownox.rowcore.commands.GmCmd;
 import me.rownox.rowcore.commands.HealCmd;
@@ -81,6 +82,7 @@ public final class RowCore extends JavaPlugin {
             put("gmsp", new GmCmd(GameMode.SPECTATOR));
             put("home", new HomeCmd());
             put("sethome", new SethomeCmd());
+            put("debug", new DebugCmd());
         }};
 
         for (Map.Entry<String, CommandExecutor> command : commands.entrySet()) {

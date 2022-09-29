@@ -22,3 +22,5 @@ commands:
     usage: /home <name>
   sethome:
     usage: /sethome <name>
+  debug:
+    permission: is.op

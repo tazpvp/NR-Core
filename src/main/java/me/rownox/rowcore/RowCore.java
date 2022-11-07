@@ -1,10 +1,7 @@
 package me.rownox.rowcore;
 
 import com.google.gson.Gson;
-import me.rownox.rowcore.commands.DebugCmd;
-import me.rownox.rowcore.commands.FlyCmd;
-import me.rownox.rowcore.commands.GmCmd;
-import me.rownox.rowcore.commands.HealCmd;
+import me.rownox.rowcore.commands.*;
 import me.rownox.rowcore.commands.home.HomeCmd;
 import me.rownox.rowcore.commands.home.SethomeCmd;
 import me.rownox.rowcore.data.Home;
@@ -84,6 +81,8 @@ public final class RowCore extends JavaPlugin {
             put("home", new HomeCmd());
             put("sethome", new SethomeCmd());
             put("debug", new DebugCmd());
+            put("setspawn", new SpawnCmd("set"));
+            put("spawn", new SpawnCmd("teleport"));
         }};
 
         for (Map.Entry<String, CommandExecutor> command : commands.entrySet()) {

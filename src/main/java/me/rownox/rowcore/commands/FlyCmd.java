@@ -14,7 +14,7 @@ public class FlyCmd implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player p) {
 
-            if (!checkPerms(p,"rowcore.fly")) return false;
+            if (!checkPerms(p,"fly")) return false;
 
             if (args.length >= 1 && args[0] != null) {
 

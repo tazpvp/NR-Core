@@ -7,21 +7,18 @@ import me.rownox.rowcore.utils.command.CommandFunction;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Sound;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.metadata.FixedMetadataValue;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import static me.rownox.rowcore.utils.PlayerUtils.checkPerms;
 
-public class SpawnCommandExecutor extends CommandCore implements CommandFunction {
+public class SpawnCommandFunction extends CommandCore implements CommandFunction {
     private final String spawnType;
 
-    public SpawnCommandExecutor(String type) {
+    public SpawnCommandFunction(String type) {
         super("spawn", null, "spawn");
         this.spawnType = type;
         setDefaultFunction(this);

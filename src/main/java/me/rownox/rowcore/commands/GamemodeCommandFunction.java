@@ -4,8 +4,6 @@ import me.rownox.rowcore.utils.command.CommandCore;
 import me.rownox.rowcore.utils.command.CommandFunction;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -13,7 +11,7 @@ import javax.annotation.Nonnull;
 
 import static me.rownox.rowcore.utils.PlayerUtils.checkPerms;
 
-public class GamemodeCommandExecutor extends CommandCore implements CommandFunction {
+public class GamemodeCommandFunction extends CommandCore implements CommandFunction {
 
     private final GameMode GAMEMODE;
     private final String NODE;
@@ -23,7 +21,7 @@ public class GamemodeCommandExecutor extends CommandCore implements CommandFunct
      * @param GAMEMODE The gamemode you want the player to change to
      * @param NODE The alias of the gamemode command e.g. "gmc"
      */
-    public GamemodeCommandExecutor(@Nonnull final GameMode GAMEMODE, @Nonnull final String NODE) {
+    public GamemodeCommandFunction(@Nonnull final GameMode GAMEMODE, @Nonnull final String NODE) {
         super(NODE, "gm", NODE);
         this.GAMEMODE = GAMEMODE;
         this.NODE = NODE;

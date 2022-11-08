@@ -2,13 +2,8 @@ package me.rownox.rowcore;
 
 import me.rownox.rowcore.commands.*;
 import org.bukkit.GameMode;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.defaults.HelpCommand;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import java.io.*;
-import java.util.*;
 
 public final class RowCore extends JavaPlugin {
     public static RowCore instance;
@@ -32,15 +27,15 @@ public final class RowCore extends JavaPlugin {
     }
 
     public void registerCommands() { //makes sure the plugin knows about the command classes
-        new HelpCommandExecutor();
-        new SpawnCommandExecutor("set");
-        new SpawnCommandExecutor("teleport");
-        new HealCommandExecutor();
-        new FlyCommandExecutor();
-        new GamemodeCommandExecutor(GameMode.CREATIVE, "gmc");
-        new GamemodeCommandExecutor(GameMode.SURVIVAL, "gms");
-        new GamemodeCommandExecutor(GameMode.ADVENTURE, "gma");
-        new GamemodeCommandExecutor(GameMode.SPECTATOR, "gmsp");
+        new HelpCommandFunction();
+        new SpawnCommandFunction("set");
+        new SpawnCommandFunction("teleport");
+        new HealCommandFunction();
+        new FlyCommandFunction();
+        new GamemodeCommandFunction(GameMode.CREATIVE, "gmc");
+        new GamemodeCommandFunction(GameMode.SURVIVAL, "gms");
+        new GamemodeCommandFunction(GameMode.ADVENTURE, "gma");
+        new GamemodeCommandFunction(GameMode.SPECTATOR, "gmsp");
     }
 
     public static RowCore getInstance(){

@@ -11,3 +11,7 @@ spawn:
 teleport:
   sound: ENTITY_ENDERMAN_TELEPORT
   delay: 5
+
+help:
+  - "I love helping people"
+  - "Helping is &cwhat &fI do&l!"

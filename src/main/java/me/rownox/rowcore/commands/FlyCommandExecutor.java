@@ -9,7 +9,7 @@ import org.bukkit.entity.Player;
 import static me.rownox.rowcore.utils.PlayerUtils.checkPerms;
 import static me.rownox.rowcore.utils.PlayerUtils.healPlr;
 
-public class FlyCmd implements CommandExecutor {
+public class FlyCommandExecutor implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player p) {

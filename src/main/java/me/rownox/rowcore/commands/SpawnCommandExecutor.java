@@ -16,10 +16,10 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import static me.rownox.rowcore.utils.PlayerUtils.checkPerms;
 
-public class SpawnCmd implements CommandExecutor {
+public class SpawnCommandExecutor implements CommandExecutor {
     private final String spawnType;
 
-    public SpawnCmd(String type) {
+    public SpawnCommandExecutor(String type) {
         this.spawnType = type;
     }
 

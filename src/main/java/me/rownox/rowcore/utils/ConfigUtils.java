@@ -5,11 +5,15 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;
 
+import java.util.List;
+
 public class ConfigUtils {
 
     private static final FileConfiguration CONFIG = RowCore.getInstance().config;
 
     public static Location spawn;
+
+    public static List<String> help = CONFIG.getStringList("help");
 
     public static void setSpawn(Location loc) {
         CONFIG.set("spawn.world", loc.getWorld().getName());

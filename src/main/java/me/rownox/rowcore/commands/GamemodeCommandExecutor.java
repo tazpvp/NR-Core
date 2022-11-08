@@ -9,11 +9,11 @@ import org.bukkit.entity.Player;
 
 import static me.rownox.rowcore.utils.PlayerUtils.checkPerms;
 
-public class GmCmd implements CommandExecutor {
+public class GamemodeCommandExecutor implements CommandExecutor {
 
     private final GameMode gamemode;
 
-    public GmCmd(GameMode gamemode) {
+    public GamemodeCommandExecutor(GameMode gamemode) {
         this.gamemode = gamemode;
     }
 

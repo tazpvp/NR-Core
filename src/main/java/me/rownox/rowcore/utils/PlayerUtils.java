@@ -11,7 +11,7 @@ import static me.rownox.rowcore.utils.ChatUtils.chat;
 public final class PlayerUtils {
 
     private static final FileConfiguration CONFIG = RowCore.getInstance().config;
-    private static final String prefix = "rowcore.";
+    private static final String PREFIX = "rowcore.";
 
     /**
      * Check if the player has the given permission or the absolute one.
@@ -20,8 +20,8 @@ public final class PlayerUtils {
      */
     public static boolean checkPerms(final CommandSender sender, final String permission) {
         if (sender.isOp()) return true;
-        if (!sender.hasPermission(permission) && !sender.hasPermission(prefix + "*")) {
-            sender.sendMessage(chat(ConfigUtils.noPermission + permission));
+        if (!sender.hasPermission(permission) && !sender.hasPermission(PREFIX + "*")) {
+            sender.sendMessage(chat(ConfigUtils.noPermission + PREFIX + permission));
             return false;
         }
         return true;
@@ -33,8 +33,8 @@ public final class PlayerUtils {
      */
     public static boolean checkPerms(final CommandSender sender) {
         if (sender.isOp()) return true;
-        if (!sender.hasPermission(prefix + "*")) {
-            sender.sendMessage(chat(ConfigUtils.noPermission + prefix + "*"));
+        if (!sender.hasPermission(PREFIX + "*")) {
+            sender.sendMessage(chat(ConfigUtils.noPermission + PREFIX + "*"));
             return false;
         }
         return true;
@@ -45,9 +45,7 @@ public final class PlayerUtils {
      * @param p The targeted player
      */
     public static void healPlr(final Player p) {
-        final double maxHealth = p.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue();
-
-        p.setHealth(maxHealth);
+        p.setHealth(p.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
         p.setFoodLevel(20);
     }
 }

@@ -12,7 +12,7 @@ import static me.rownox.rowcore.utils.PlayerUtils.healPlr;
 public class FlyCommandFunction extends CommandCore implements CommandFunction {
 
     public FlyCommandFunction() {
-        super("fly", "fly", "flight");
+        super("fly", "rowcore.fly", "flight");
         setDefaultFunction(this);
     }
 

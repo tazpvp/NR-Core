@@ -4,6 +4,7 @@ import lombok.NonNull;
 import lombok.Setter;
 import me.rownox.rowcore.RowCore;
 import me.rownox.rowcore.utils.ConfigUtils;
+import me.rownox.rowcore.utils.PlayerUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandMap;
@@ -55,7 +56,7 @@ public abstract class CommandCore extends BukkitCommand {
      * @param permission Permission for the command
      * @param alias Aliases, can be blank
      */
-    protected CommandCore(@NonNull final String name, final String permission, @NonNull final String... alias) {
+    public CommandCore(@NonNull final String name, final String permission, @NonNull final String... alias) {
         super(name, "", "/" + name, Arrays.asList(alias));
         setPermission(permission);
         register();
@@ -97,7 +98,7 @@ public abstract class CommandCore extends BukkitCommand {
     @Override
     public final boolean execute(CommandSender sender, String commandLabel, String[] args) {
 
-        if (this.getPermission() != null && !sender.hasPermission(getPermission())) {
+        if (this.getPermission() != null && PlayerUtils.checkPerms(sender, "rowcore."+getPermission())) {
             sender.sendMessage(invalidPermissionMessage());
         }
 

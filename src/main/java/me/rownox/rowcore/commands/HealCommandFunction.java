@@ -12,7 +12,7 @@ import static me.rownox.rowcore.utils.PlayerUtils.healPlr;
 public class HealCommandFunction extends CommandCore implements CommandFunction {
 
     public HealCommandFunction() {
-        super("heal", "rowcore.heal", "heal");
+        super("heal", "heal", "heal");
         setDefaultFunction(this);
     }
 

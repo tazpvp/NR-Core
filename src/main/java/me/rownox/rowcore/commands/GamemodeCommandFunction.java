@@ -22,7 +22,7 @@ public class GamemodeCommandFunction extends CommandCore implements CommandFunct
      * @param NODE The alias of the gamemode command e.g. "gmc"
      */
     public GamemodeCommandFunction(@Nonnull final GameMode GAMEMODE, @Nonnull final String NODE) {
-        super(NODE, "gm", NODE);
+        super(NODE, NODE, NODE);
         this.GAMEMODE = GAMEMODE;
         this.NODE = NODE;
         setDefaultFunction(this);

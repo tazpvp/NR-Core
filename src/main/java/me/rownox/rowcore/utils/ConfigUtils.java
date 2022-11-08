@@ -13,6 +13,8 @@ public class ConfigUtils {
 
     public static Location spawn;
 
+    public static String noPermission = CONFIG.getString("No-Permission");
+
     public static List<String> help = CONFIG.getStringList("help");
 
     public static void setSpawn(Location loc) {

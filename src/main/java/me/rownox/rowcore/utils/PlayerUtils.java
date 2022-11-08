@@ -2,6 +2,7 @@ package me.rownox.rowcore.utils;
 
 import me.rownox.rowcore.RowCore;
 import org.bukkit.attribute.Attribute;
+import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
@@ -14,13 +15,13 @@ public final class PlayerUtils {
 
     /**
      * Check if the player has the given permission or the absolute one.
-     * @param p The targeted player
+     * @param sender The targeted Command Sender
      * @param permission The permission you want to check for
      */
-    public static boolean checkPerms(final Player p, final String permission) {
-        if (p.isOp()) return true;
-        if (!p.hasPermission(permission) && !p.hasPermission(prefix + "*")) {
-            p.sendMessage(chat(CONFIG.getString("No-Permission") + permission));
+    public static boolean checkPerms(final CommandSender sender, final String permission) {
+        if (sender.isOp()) return true;
+        if (!sender.hasPermission(permission) && !sender.hasPermission(prefix + "*")) {
+            sender.sendMessage(chat(ConfigUtils.noPermission + permission));
             return false;
         }
         return true;
@@ -28,12 +29,12 @@ public final class PlayerUtils {
 
     /**
      * Check if the player has the given permission or the absolute one.
-     * @param p The targeted player
+     * @param sender The targeted Command Sender
      */
-    public static boolean checkPerms(final Player p) {
-        if (p.isOp()) return true;
-        if (!p.hasPermission(prefix + "*")) {
-            p.sendMessage(chat(CONFIG.getString("No-Permission") + prefix + "*"));
+    public static boolean checkPerms(final CommandSender sender) {
+        if (sender.isOp()) return true;
+        if (!sender.hasPermission(prefix + "*")) {
+            sender.sendMessage(chat(ConfigUtils.noPermission + prefix + "*"));
             return false;
         }
         return true;

@@ -2,25 +2,3 @@ name: RowCore
 version: '${project.version}'
 main: me.rownox.rowcore.RowCore
 api-version: 1.19
-
-commands:
-  heal:
-    usage: /heal <player>
-    description: "Replenish hearts and food of a user."
-  fly:
-    usage: /fly <player>
-    description: "Allow a player to fly."
-  gmc:
-    usage: /gmc <player>
-  gms:
-    usage: /gms <player>
-  gma:
-    usage: /gma <player>
-  gmsp:
-    usage: /gmsp <player>
-  debug:
-    permission: is.op
-  spawn:
-    usage: /spawn
-  setspawn:
-    permission: is.op

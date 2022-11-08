@@ -3,6 +3,7 @@ package me.rownox.rowcore.utils.command;
 import lombok.NonNull;
 import lombok.Setter;
 import me.rownox.rowcore.RowCore;
+import me.rownox.rowcore.utils.ConfigUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandMap;
@@ -103,6 +104,11 @@ public abstract class CommandCore extends BukkitCommand {
         return executeFunction(sender, args, defaultFunction);
     }
 
+    public boolean executeCommand(@NonNull final CommandSender sender, @NonNull final String[] args,
+                                  @NonNull final CommandFunction<? extends CommandSender> function) {
+        return executeFunction(sender, args, function);
+    }
+
     /**
      * Uses reflection to execute a function
      *
@@ -124,6 +130,8 @@ public abstract class CommandCore extends BukkitCommand {
         }
     }
 
-    public abstract String invalidPermissionMessage();
+    public String invalidPermissionMessage() {
+        return ConfigUtils.noPermission + getPermission();
+    }
 
 }

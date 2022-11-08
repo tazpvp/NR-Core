@@ -2,6 +2,8 @@ package me.rownox.rowcore.commands;
 
 import me.rownox.rowcore.RowCore;
 import me.rownox.rowcore.utils.ConfigUtils;
+import me.rownox.rowcore.utils.command.CommandCore;
+import me.rownox.rowcore.utils.command.CommandFunction;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Sound;
@@ -16,28 +18,26 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import static me.rownox.rowcore.utils.PlayerUtils.checkPerms;
 
-public class SpawnCommandExecutor implements CommandExecutor {
+public class SpawnCommandExecutor extends CommandCore implements CommandFunction {
     private final String spawnType;
 
     public SpawnCommandExecutor(String type) {
+        super("spawn", null, "spawn");
         this.spawnType = type;
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-
+    public void execute(CommandSender sender, String[] args) {
         if (sender instanceof Player p) {
 
             final RowCore ROWCORE = RowCore.getInstance();
             final FileConfiguration CONFIG = RowCore.getInstance().config;
 
             if (spawnType.equals("set")) {
-                if (checkPerms(p,"spawn.set")) return false;
+                if (checkPerms(p,"spawn.set")) return;
 
                 Location loc = p.getLocation();
                 ConfigUtils.setSpawn(loc);
-
-                return true;
 
             } else if (spawnType.equals("teleport")) {
 
@@ -58,6 +58,5 @@ public class SpawnCommandExecutor implements CommandExecutor {
                 }.runTaskLater(ROWCORE, 5 * 20);
             }
         }
-        return false;
     }
 }

@@ -3,6 +3,7 @@ package me.rownox.rowcore;
 import me.rownox.rowcore.commands.*;
 import org.bukkit.GameMode;
 import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.defaults.HelpCommand;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -31,21 +32,15 @@ public final class RowCore extends JavaPlugin {
     }
 
     public void registerCommands() { //makes sure the plugin knows about the command classes
-        Map<String, CommandExecutor> commands = new HashMap<>() {{
-            put("heal", new HealCommandExecutor());
-            put("fly", new FlyCommandExecutor());
-            put("gmc", new GamemodeCommandExecutor(GameMode.CREATIVE));
-            put("gms", new GamemodeCommandExecutor(GameMode.SURVIVAL));
-            put("gma", new GamemodeCommandExecutor(GameMode.ADVENTURE));
-            put("gmsp", new GamemodeCommandExecutor(GameMode.SPECTATOR));
-            put("debug", new DebugCommandExecutor());
-            put("setspawn", new SpawnCommandExecutor("set"));
-            put("spawn", new SpawnCommandExecutor("teleport"));
-        }};
-
-        for (Map.Entry<String, CommandExecutor> command : commands.entrySet()) {
-            getCommand(command.getKey()).setExecutor(command.getValue());
-        }
+        new HelpCommandExecutor();
+        new SpawnCommandExecutor("set");
+        new SpawnCommandExecutor("teleport");
+        new HealCommandExecutor();
+        new FlyCommandExecutor();
+        new GamemodeCommandExecutor(GameMode.CREATIVE, "gmc");
+        new GamemodeCommandExecutor(GameMode.SURVIVAL, "gms");
+        new GamemodeCommandExecutor(GameMode.ADVENTURE, "gma");
+        new GamemodeCommandExecutor(GameMode.SPECTATOR, "gmsp");
     }
 
     public static RowCore getInstance(){

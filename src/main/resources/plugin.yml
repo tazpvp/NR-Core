@@ -20,4 +20,7 @@ commands:
     usage: /gmsp <player>
   debug:
     permission: is.op
-  help:
+  spawn:
+    usage: /spawn
+  setspawn:
+    permission: is.op

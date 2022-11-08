@@ -28,7 +28,7 @@ public class SpawnCommandExecutor implements CommandExecutor {
 
         if (sender instanceof Player p) {
 
-            final Plugin PLUGIN = RowCore.getInstance();
+            final RowCore ROWCORE = RowCore.getInstance();
             final FileConfiguration CONFIG = RowCore.getInstance().config;
 
             if (spawnType.equals("set")) {
@@ -42,12 +42,12 @@ public class SpawnCommandExecutor implements CommandExecutor {
             } else if (spawnType.equals("teleport")) {
 
                 p.sendMessage(ChatColor.DARK_AQUA + "You'll be teleported to spawn in " + ChatColor.AQUA + CONFIG.getString("teleport.delay") + " Seconds" + ChatColor.DARK_AQUA + " Do not move.");
-                p.setMetadata("goingToSpawn", new FixedMetadataValue(PLUGIN, true));
+                p.setMetadata("goingToSpawn", new FixedMetadataValue(ROWCORE, true));
                 new BukkitRunnable(){
                     @Override
                     public void run() {
                         if (p.hasMetadata("goingToSpawn")){
-                            p.removeMetadata("goingToSpawn", PLUGIN);
+                            p.removeMetadata("goingToSpawn", ROWCORE);
 
                             p.teleport(ConfigUtils.spawn);
                             p.sendMessage(ChatColor.DARK_AQUA + "Teleportation complete.");
@@ -55,7 +55,7 @@ public class SpawnCommandExecutor implements CommandExecutor {
                             p.playSound(p.getLocation(), Sound.valueOf(CONFIG.getString("teleport.sound")), 1, 1);
                         }
                     }
-                }.runTaskLater(PLUGIN, 5 * 20);
+                }.runTaskLater(ROWCORE, 5 * 20);
             }
         }
         return false;

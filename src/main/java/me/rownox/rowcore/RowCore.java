@@ -13,19 +13,6 @@ public final class RowCore extends JavaPlugin {
     public static RowCore instance;
     public FileConfiguration config = this.getConfig();
 
-    public Map<String, CommandExecutor> commands = new HashMap<>() {{
-        put("heal", new HealCommandExecutor());
-        put("fly", new FlyCommandExecutor());
-        put("gmc", new GamemodeCommandExecutor(GameMode.CREATIVE));
-        put("gms", new GamemodeCommandExecutor(GameMode.SURVIVAL));
-        put("gma", new GamemodeCommandExecutor(GameMode.ADVENTURE));
-        put("gmsp", new GamemodeCommandExecutor(GameMode.SPECTATOR));
-        put("debug", new DebugCommandExecutor());
-        put("setspawn", new SpawnCommandExecutor("set"));
-        put("spawn", new SpawnCommandExecutor("teleport"));
-        put("help", new HelpCommandExecutor());
-    }};
-
     @Override
     public void onEnable() {
 
@@ -44,6 +31,17 @@ public final class RowCore extends JavaPlugin {
     }
 
     public void registerCommands() { //makes sure the plugin knows about the command classes
+        Map<String, CommandExecutor> commands = new HashMap<>() {{
+            put("heal", new HealCommandExecutor());
+            put("fly", new FlyCommandExecutor());
+            put("gmc", new GamemodeCommandExecutor(GameMode.CREATIVE));
+            put("gms", new GamemodeCommandExecutor(GameMode.SURVIVAL));
+            put("gma", new GamemodeCommandExecutor(GameMode.ADVENTURE));
+            put("gmsp", new GamemodeCommandExecutor(GameMode.SPECTATOR));
+            put("debug", new DebugCommandExecutor());
+            put("setspawn", new SpawnCommandExecutor("set"));
+            put("spawn", new SpawnCommandExecutor("teleport"));
+        }};
 
         for (Map.Entry<String, CommandExecutor> command : commands.entrySet()) {
             getCommand(command.getKey()).setExecutor(command.getValue());

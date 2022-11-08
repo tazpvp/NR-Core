@@ -24,6 +24,7 @@ public class SpawnCommandExecutor extends CommandCore implements CommandFunction
     public SpawnCommandExecutor(String type) {
         super("spawn", null, "spawn");
         this.spawnType = type;
+        setDefaultFunction(this);
     }
 
     @Override

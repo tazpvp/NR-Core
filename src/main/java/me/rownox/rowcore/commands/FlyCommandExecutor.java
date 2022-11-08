@@ -16,6 +16,7 @@ public class FlyCommandExecutor extends CommandCore implements CommandFunction {
 
     public FlyCommandExecutor() {
         super("fly", "fly", "flight");
+        setDefaultFunction(this);
     }
 
     @Override

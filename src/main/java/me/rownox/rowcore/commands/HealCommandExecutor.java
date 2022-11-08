@@ -16,6 +16,7 @@ public class HealCommandExecutor extends CommandCore implements CommandFunction 
 
     public HealCommandExecutor() {
         super("heal", "rowcore.heal", "heal");
+        setDefaultFunction(this);
     }
 
     @Override

@@ -27,6 +27,7 @@ public class GamemodeCommandExecutor extends CommandCore implements CommandFunct
         super(NODE, "gm", NODE);
         this.GAMEMODE = GAMEMODE;
         this.NODE = NODE;
+        setDefaultFunction(this);
     }
 
     @Override

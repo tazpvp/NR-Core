@@ -29,7 +29,7 @@ public final class RowCore extends JavaPlugin {
     public void registerCommands() { //makes sure the plugin knows about the command classes
         new HelpCommandFunction();
         new SpawnCommandFunction("set");
-        new SpawnCommandFunction("teleport");
+        new SpawnCommandFunction("");
         new HealCommandFunction();
         new FlyCommandFunction();
         new GamemodeCommandFunction(GameMode.CREATIVE, "gmc");

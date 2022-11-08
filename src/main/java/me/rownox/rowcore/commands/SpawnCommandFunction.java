@@ -19,7 +19,7 @@ public class SpawnCommandFunction extends CommandCore implements CommandFunction
     private final String spawnType;
 
     public SpawnCommandFunction(String type) {
-        super("spawn", null, "spawn");
+        super(type+"spawn", null, type+"spawn");
         this.spawnType = type;
         setDefaultFunction(this);
     }
@@ -37,7 +37,7 @@ public class SpawnCommandFunction extends CommandCore implements CommandFunction
                 Location loc = p.getLocation();
                 ConfigUtils.setSpawn(loc);
 
-            } else if (spawnType.equals("teleport")) {
+            } else {
 
                 p.sendMessage(ChatColor.DARK_AQUA + "You'll be teleported to spawn in " + ChatColor.AQUA + CONFIG.getString("teleport.delay") + " Seconds" + ChatColor.DARK_AQUA + " Do not move.");
                 p.setMetadata("goingToSpawn", new FixedMetadataValue(ROWCORE, true));

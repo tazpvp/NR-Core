@@ -1,4 +1,4 @@
-package me.rownox.rowcore.gui;
+package me.rownox.rowcore.utils.gui;
 
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;

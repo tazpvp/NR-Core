@@ -1,4 +1,4 @@
-package me.rownox.rowcore.gui;
+package me.rownox.rowcore.utils.gui;
 
 import me.rownox.rowcore.RowCore;
 import org.bukkit.Bukkit;

@@ -6,6 +6,7 @@ import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.Event;
+import org.bukkit.event.block.BlockEvent;
 
 import java.util.List;
 
@@ -37,11 +38,5 @@ public class ConfigUtils {
                 (float) CONFIG.getDouble("spawn.yaw"),
                 (float) CONFIG.getDouble("spawn.pitch")
         );
-    }
-
-    public static void WorldGuardCancel(Event e, String path) {
-        if (Boolean.parseBoolean(CONFIG.getString("world-guard." + path))) {
-            e.getEventName();
-        }
     }
 }

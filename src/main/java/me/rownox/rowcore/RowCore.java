@@ -1,6 +1,7 @@
 package me.rownox.rowcore;
 
 import me.rownox.rowcore.commands.*;
+import me.rownox.rowcore.events.WorldGuard;
 import me.rownox.rowcore.utils.item.builders.ItemBuilder;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
@@ -13,6 +14,7 @@ public final class RowCore extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        getServer().getPluginManager().registerEvents(new WorldGuard(), this);
 
         instance = this;
         registerCommands();

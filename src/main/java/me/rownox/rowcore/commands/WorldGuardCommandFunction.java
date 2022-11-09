@@ -29,8 +29,8 @@ public class WorldGuardCommandFunction extends CommandCore implements CommandFun
 
             if (sender instanceof Player) {
                 sender.sendMessage(
-                    net.md_5.bungee.api.ChatColor.of(CONFIG.getString("theme.secondary")) + "Block state changing was set to: " +
-                    net.md_5.bungee.api.ChatColor.of(CONFIG.getString("theme.main")) + CONFIG.getString("world-guard.block-state-change").toUpperCase()
+                    net.md_5.bungee.api.ChatColor.translateAlternateColorCodes('&', CONFIG.getString("theme.secondary")) + "Block state changing was set to: " +
+                    net.md_5.bungee.api.ChatColor.translateAlternateColorCodes('&', CONFIG.getString("theme.main")) + CONFIG.getString("world-guard.block-state-change").toUpperCase()
                 );
             }
 

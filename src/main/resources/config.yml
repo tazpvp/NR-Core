@@ -1,6 +1,6 @@
 theme:
-  main: 0x00C0C8
-  secondary: 0x0096C8
+  main: "&0&0&c&0&c&8"
+  secondary: "&0&0&9&6&C&8"
 
 no-permission: " &cYou are missing the permission: "
 

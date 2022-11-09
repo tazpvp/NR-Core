@@ -1,3 +1,7 @@
+theme:
+  main: 0x00C0C8
+  secondary: 0x0096C8
+
 No-Permission: " &cYou are missing the permission: "
 
 spawn:
@@ -15,3 +19,6 @@ teleport:
 help:
   - "I love helping people"
   - "Helping is &cwhat &fI do&l!"
+
+world-guard:
+  block-state-change: true

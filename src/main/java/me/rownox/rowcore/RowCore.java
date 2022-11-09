@@ -38,6 +38,7 @@ public final class RowCore extends JavaPlugin {
         new GamemodeCommandFunction(GameMode.SURVIVAL, "gms");
         new GamemodeCommandFunction(GameMode.ADVENTURE, "gma");
         new GamemodeCommandFunction(GameMode.SPECTATOR, "gmsp");
+        new WorldGuardCommandFunction("worldguard", "worldguard", "wg");
     }
 
     public static RowCore getInstance(){

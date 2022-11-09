@@ -2,8 +2,10 @@ package me.rownox.rowcore.utils;
 
 import me.rownox.rowcore.RowCore;
 import org.bukkit.Bukkit;
+import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.event.Event;
 
 import java.util.List;
 
@@ -37,5 +39,9 @@ public class ConfigUtils {
         );
     }
 
-
+    public static void WorldGuardCancel(Event e, String path) {
+        if (Boolean.parseBoolean(CONFIG.getString("world-guard." + path))) {
+            e.getEventName();
+        }
+    }
 }

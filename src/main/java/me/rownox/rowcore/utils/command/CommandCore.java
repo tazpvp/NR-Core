@@ -58,7 +58,7 @@ public abstract class CommandCore extends BukkitCommand {
      */
     public CommandCore(@NonNull final String name, final String permission, @NonNull final String... alias) {
         super(name, "", "/" + name, Arrays.asList(alias));
-        setPermission(permission);
+        setPermission("rowcore."+permission);
         register();
     }
 
@@ -98,7 +98,7 @@ public abstract class CommandCore extends BukkitCommand {
     @Override
     public final boolean execute(CommandSender sender, String commandLabel, String[] args) {
 
-        if (this.getPermission() != null && PlayerUtils.checkPerms(sender, getPermission())) {
+        if (this.getPermission() != null && !sender.hasPermission(getPermission())) {
             sender.sendMessage(invalidPermissionMessage());
         }
 

@@ -21,16 +21,16 @@ public class WorldGuardCommandFunction extends CommandCore implements CommandFun
         FileConfiguration CONFIG = RowCore.getInstance().config;
 
         if (args[0].equalsIgnoreCase("blockstatechange")) {
-            if (Boolean.valueOf(CONFIG.getString("world-guard.block_state_change"))) {
-                CONFIG.set("world-guard.block_state_change", "false");
+            if (Boolean.valueOf(CONFIG.getString("world-guard.block-state-change"))) {
+                CONFIG.set("world-guard.block-state-change", "false");
             } else {
-                CONFIG.set("world-guard.block_state_change", "true");
+                CONFIG.set("world-guard.block-state-change", "true");
             }
 
             if (sender instanceof Player) {
                 sender.sendMessage(
-                    ChatColor.valueOf(CONFIG.getString("theme.secondary")) + "Block state changing was set to: " +
-                    ChatColor.valueOf(CONFIG.getString("theme.main")) + CONFIG.getString("world-guard.block_state_change").toUpperCase()
+                    net.md_5.bungee.api.ChatColor.of(CONFIG.getString("theme.secondary")) + "Block state changing was set to: " +
+                    net.md_5.bungee.api.ChatColor.of(CONFIG.getString("theme.main")) + CONFIG.getString("world-guard.block-state-change").toUpperCase()
                 );
             }
 

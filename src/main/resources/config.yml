@@ -2,7 +2,7 @@ theme:
   main: 0x00C0C8
   secondary: 0x0096C8
 
-No-Permission: " &cYou are missing the permission: "
+no-permission: " &cYou are missing the permission: "
 
 spawn:
   world: world

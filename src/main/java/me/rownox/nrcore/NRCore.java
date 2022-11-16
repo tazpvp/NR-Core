@@ -12,7 +12,6 @@ public final class NRCore extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        getServer().getPluginManager().registerEvents(new WorldGuard(), this);
 
         instance = this;
         registerCommands();
@@ -20,6 +19,8 @@ public final class NRCore extends JavaPlugin {
         config.addDefault("no-permission", " &cYou are missing the permission: ");
         config.options().copyDefaults(true);
         saveConfig();
+
+        getServer().getPluginManager().registerEvents(new WorldGuard(), this);
 
     }
 

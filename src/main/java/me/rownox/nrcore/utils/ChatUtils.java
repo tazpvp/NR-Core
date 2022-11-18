@@ -7,4 +7,15 @@ public final class ChatUtils {
     public static String chat(String text) {
         return translateAlternateColorCodes('&', text);
     }
+
+    /**
+     * https://www.baeldung.com/java-remove-last-character-of-string
+     * @param s String to affect
+     * @return The new string without the last character
+     */
+    public static String removeLastChar(String s) {
+        return (s == null || s.length() == 0)
+                ? null
+                : (s.substring(0, s.length() - 1));
+    }
 }

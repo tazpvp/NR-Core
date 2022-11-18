@@ -1,6 +1,7 @@
 package me.rownox.nrcore.utils.sql;
 
 import me.rownox.nrcore.NRCore;
+import me.rownox.nrcore.utils.ChatUtils;
 
 import javax.annotation.Nonnull;
 import java.sql.ResultSet;
@@ -23,7 +24,7 @@ public final class SQLHelper {
         try {
             STMT.executeUpdate(
                     "CREATE TABLE IF NOT EXISTS " + NAME
-                    + " (" + sb.toString() + ")"
+                    + " (" + ChatUtils.removeLastChar(sb.toString()) + ")"
             );
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -41,8 +42,9 @@ public final class SQLHelper {
         for (String str : VALUES) {
             sb.append(str).append(",");
         }
+
         try {
-            STMT.executeUpdate("INSERT INTO " + NAME + " (" + DEFAULT_PARAM + ") VALUES (" + sb.toString() + ");");
+            STMT.executeUpdate("INSERT INTO " + NAME + " (" + DEFAULT_PARAM + ") VALUES (" + ChatUtils.removeLastChar(sb.toString()) + ");");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

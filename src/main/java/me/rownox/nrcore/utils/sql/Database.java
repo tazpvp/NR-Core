@@ -11,6 +11,7 @@ import java.sql.Statement;
 public class Database {
     @Getter
     private Connection c = null;
+    @Getter
     private Statement stmt = null;
 
     public Database() {

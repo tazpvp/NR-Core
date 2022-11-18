@@ -1,18 +1,24 @@
 package me.rownox.nrcore;
 
+import lombok.Getter;
 import me.rownox.nrcore.commands.*;
 import me.rownox.nrcore.events.WorldGuard;
+import me.rownox.nrcore.utils.ConfigUtils;
+import me.rownox.nrcore.utils.sql.DatabaseThread;
 import org.bukkit.GameMode;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.concurrent.CompletableFuture;
+
 public final class NRCore extends JavaPlugin {
     public static NRCore instance;
+    @Getter
+    private static DatabaseThread databaseThread;
     public FileConfiguration config = this.getConfig();
 
     @Override
     public void onEnable() {
-
         instance = this;
         registerCommands();
 
@@ -22,6 +28,10 @@ public final class NRCore extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new WorldGuard(), this);
 
+        if (ConfigUtils.SQLENABLED) {
+            databaseThread = new DatabaseThread();
+            CompletableFuture.runAsync(databaseThread::start); //.thenRun(SQLHelper::initTable)
+        }
     }
 
     @Override

@@ -7,7 +7,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 
 import java.util.List;
 
-public class ConfigUtils {
+public final class ConfigUtils {
 
     private static final FileConfiguration CONFIG = NRCore.getInstance().config;
 
@@ -16,6 +16,11 @@ public class ConfigUtils {
     public static String noPermission = CONFIG.getString("no-permission");
 
     public static List<String> help = CONFIG.getStringList("help");
+
+    public static Boolean SQLENABLED = CONFIG.getBoolean("sql.sql-enabled");
+    public static String SQLURL = CONFIG.getString("sql.sql-url");
+    public static String SQLUSER = CONFIG.getString("sql.sql-user");
+    public static String SQLPASSWORD = CONFIG.getString("sql.sql-password");
 
     public static void setSpawn(Location loc) {
         CONFIG.set("spawn.world", loc.getWorld().getName());

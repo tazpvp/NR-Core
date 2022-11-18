@@ -20,5 +20,17 @@ help:
   - "I love helping people"
   - "Helping is &cwhat &fI do&l!"
 
+# World Guard configs
 world-guard:
   block-state-change: true
+
+# SQL DB ONLY USE FOR DEVELOPERS USING API
+sql:
+  # Enable usage of a sql Database
+  sql-enabled: false
+  # The Url of the database, NOT INCLUDING HTTP:// or :// or HTTPS://
+  sql-url: ""
+  # SUPERUSER name of the database
+  sql-user: ""
+  # The SUPERUSER password for the database
+  sql-password: ""

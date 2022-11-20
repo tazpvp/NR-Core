@@ -13,6 +13,15 @@ public final class PlayerUtils {
     private static final FileConfiguration CONFIG = NRCore.getInstance().config;
     private static final String PREFIX = "rowcore.";
 
+    public static boolean checkPerms(final CommandSender sender, final String arg1, final String arg2) {
+        if (sender.isOp()) return true;
+        if (!sender.hasPermission(arg1 + arg2) && !sender.hasPermission(PREFIX + "*")) {
+            sender.sendMessage(chat(ConfigUtils.noPermission + PREFIX + arg1 + arg2));
+            return false;
+        }
+        return true;
+    }
+
     /**
      * Check if the player has the given permission or the absolute one.
      * @param sender The targeted Command Sender

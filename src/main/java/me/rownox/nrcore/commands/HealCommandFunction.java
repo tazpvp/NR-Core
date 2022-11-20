@@ -18,9 +18,9 @@ public class HealCommandFunction extends CommandCore implements CommandFunction 
 
     @Override
     public void execute(CommandSender sender, String[] args) {
-        if (args.length >= 1 && args[0] != null) { //check if they actually have another argument in the command
-            checkPerms(sender, "rowcore.heal.others");
-            Player target = Bukkit.getPlayer(args[0]); //set the target variable to the first argument in the command
+        if (args.length >= 1 && args[0] != null) {
+            if (!checkPerms(sender, super.getPermission(), ".others")) return;
+            Player target = Bukkit.getPlayer(args[0]);
             if (target != null) healPlr(target);
         } else {
             if (sender instanceof Player p) {

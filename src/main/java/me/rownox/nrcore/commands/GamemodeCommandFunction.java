@@ -31,25 +31,18 @@ public class GamemodeCommandFunction extends CommandCore implements CommandFunct
     @Override
     public void execute(CommandSender sender, String[] args) {
         if (sender instanceof Player p) {
-//            if (gmCheckPerm(GameMode.CREATIVE, "gmc", p)) return;
-//            if (gmCheckPerm(GameMode.SURVIVAL, "gms", p)) return;
-//            if (gmCheckPerm(GameMode.ADVENTURE, "gma", p)) return;
-//            if (gmCheckPerm(GameMode.SPECTATOR, "gmsp", p)) return;
             if (args.length >= 1) {
                 Player target = Bukkit.getPlayer(args[0]);
-                if (checkPerms(p,"gm.others")) return;
-                if (target != null) target.setGameMode(GAMEMODE);
+                if (!checkPerms(p, NODE, ".others")) return;
+                if (target != null) {
+                    target.setGameMode(GAMEMODE);
+                    target.sendMessage("Gamemode: " + GAMEMODE.toString().toUpperCase());
+                    p.sendMessage(target + "'s gamemode: " + GAMEMODE.toString().toUpperCase());
+                }
             } else {
                 p.setGameMode(GAMEMODE);
+                p.sendMessage("Gamemode: " + GAMEMODE.toString().toUpperCase());
             }
         }
-    }
-
-    //TODO: Figure out wtf this does -Ntdi
-    public boolean gmCheckPerm(GameMode gm, String node, Player p) {
-        if (GAMEMODE.equals(gm)) {
-            return checkPerms(p, node);
-        }
-        return false;
     }
 }

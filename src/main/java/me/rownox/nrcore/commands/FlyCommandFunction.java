@@ -12,19 +12,12 @@ import static me.rownox.nrcore.utils.PlayerUtils.healPlr;
 public class FlyCommandFunction extends CommandCore implements CommandFunction {
 
     public FlyCommandFunction() {
-        super("fly", "rowcore.fly", "flight");
+        super("fly", ".fly", "flight");
         setDefaultFunction(this);
     }
 
     @Override
     public void execute(CommandSender sender, String[] args) {
-        if (sender instanceof Player p) {
-            if (args.length >= 1 && args[0] != null) {
-                Player target = Bukkit.getPlayer(args[0]);
-                if (target != null) healPlr(target);
-            } else {
-                healPlr(p);
-            }
-        }
+
     }
 }

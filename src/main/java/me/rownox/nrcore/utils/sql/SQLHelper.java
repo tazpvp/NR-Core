@@ -58,7 +58,7 @@ public final class SQLHelper {
      * @param COLUMN The Column you want to change
      * @param NEW_VALUE The new value for the specified column.
      */
-    public static void updateValue(@Nonnull final String NAME, @Nonnull final String ID, @Nonnull final String ID_VALUE, @Nonnull final String COLUMN, @Nonnull final String NEW_VALUE) {
+    public static void updateValue(@Nonnull final String NAME, @Nonnull final String ID, @Nonnull final String ID_VALUE, @Nonnull final String COLUMN, @Nonnull final Object NEW_VALUE) {
         try {
             STMT.executeUpdate("UPDATE " + NAME + " set " + COLUMN + " = " + NEW_VALUE + " WHERE " + ID + " = " + ID_VALUE + ";");
         } catch (SQLException e) {

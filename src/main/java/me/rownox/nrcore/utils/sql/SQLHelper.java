@@ -111,7 +111,10 @@ public final class SQLHelper {
     public static Object getObject(@Nonnull final String NAME, @Nonnull final String ID, @Nonnull final String ID_VALUE, @Nonnull final int INDEX) {
         ResultSet rs = getRs(NAME, ID, ID_VALUE);
         try {
-            return rs.getObject(INDEX);
+            if (rs.next()) {
+                return rs.getObject(INDEX);
+            }
+            throw new RuntimeException("No Next");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

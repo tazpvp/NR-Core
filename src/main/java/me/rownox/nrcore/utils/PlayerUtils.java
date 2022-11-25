@@ -57,4 +57,8 @@ public final class PlayerUtils {
         p.setHealth(p.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
         p.setFoodLevel(20);
     }
+
+    public static void flyPlr(final Player p) {
+        p.setFlying(true);
+    }
 }

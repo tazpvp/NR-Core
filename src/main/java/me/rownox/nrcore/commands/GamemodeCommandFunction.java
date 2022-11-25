@@ -37,7 +37,7 @@ public class GamemodeCommandFunction extends CommandCore implements CommandFunct
                 if (target != null) {
                     target.setGameMode(GAMEMODE);
                     target.sendMessage("Gamemode: " + GAMEMODE.toString().toUpperCase());
-                    p.sendMessage(target + "'s gamemode: " + GAMEMODE.toString().toUpperCase());
+                    p.sendMessage(target.getName() + "'s gamemode: " + GAMEMODE.toString().toUpperCase());
                 }
             } else {
                 p.setGameMode(GAMEMODE);

@@ -75,7 +75,7 @@ public final class SQLHelper {
      */
     public static boolean ifRowExists(@Nonnull final String NAME, @Nonnull final String ID, @Nonnull final String ID_VALUE) {
         try {
-            ResultSet rs = STMT.executeQuery("SELECT * FROM " + NAME + " WHERE " + ID + " = " + ID_VALUE);
+            ResultSet rs = STMT.executeQuery("SELECT * FROM " + NAME + " WHERE " + ID + " = '" + ID_VALUE + "'");
             if (rs.next()) {
                 return true;
             }
@@ -113,6 +113,66 @@ public final class SQLHelper {
         try {
             if (rs.next()) {
                 return rs.getObject(INDEX);
+            }
+            throw new RuntimeException("No Next");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * Get the Value of a certain column.
+     * @param NAME Name of the SQL Table.
+     * @param ID The ID Column, or first Column of the table.
+     * @param ID_VALUE The value of the ID Column that we are searching for.
+     * @param INDEX Index of the column.
+     * @return Value of the passed parameters
+     */
+    public static String getString(@Nonnull final String NAME, @Nonnull final String ID, @Nonnull final String ID_VALUE, @Nonnull final int INDEX) {
+        ResultSet rs = getRs(NAME, ID, ID_VALUE);
+        try {
+            if (rs.next()) {
+                return rs.getString(INDEX);
+            }
+            throw new RuntimeException("No Next");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * Get the Value of a certain column.
+     * @param NAME Name of the SQL Table.
+     * @param ID The ID Column, or first Column of the table.
+     * @param ID_VALUE The value of the ID Column that we are searching for.
+     * @param INDEX Index of the column.
+     * @return Value of the passed parameters
+     */
+    public static int getInt(@Nonnull final String NAME, @Nonnull final String ID, @Nonnull final String ID_VALUE, @Nonnull final int INDEX) {
+        ResultSet rs = getRs(NAME, ID, ID_VALUE);
+        try {
+            if (rs.next()) {
+                return rs.getInt(INDEX);
+            }
+            throw new RuntimeException("No Next");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * Get the Value of a certain column.
+     * @param NAME Name of the SQL Table.
+     * @param ID The ID Column, or first Column of the table.
+     * @param ID_VALUE The value of the ID Column that we are searching for.
+     * @param INDEX Index of the column.
+     * @return Value of the passed parameters
+     */
+    public static float getFloat(@Nonnull final String NAME, @Nonnull final String ID, @Nonnull final String ID_VALUE, @Nonnull final int INDEX) {
+        ResultSet rs = getRs(NAME, ID, ID_VALUE);
+        try {
+            if (rs.next()) {
+                return rs.getFloat(INDEX);
             }
             throw new RuntimeException("No Next");
         } catch (SQLException e) {

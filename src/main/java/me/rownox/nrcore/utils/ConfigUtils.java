@@ -34,9 +34,9 @@ public final class ConfigUtils {
 
     static {
         spawn = new Location(Bukkit.getWorld(CONFIG.getString("spawn.world")),
-                CONFIG.getInt("spawn.x"),
-                CONFIG.getInt("spawn.y"),
-                CONFIG.getInt("spawn.z"),
+                CONFIG.getDouble("spawn.x"),
+                CONFIG.getDouble("spawn.y"),
+                CONFIG.getDouble("spawn.z"),
                 (float) CONFIG.getDouble("spawn.yaw"),
                 (float) CONFIG.getDouble("spawn.pitch")
         );

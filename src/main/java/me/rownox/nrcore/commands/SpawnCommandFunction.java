@@ -4,6 +4,7 @@ import me.rownox.nrcore.NRCore;
 import me.rownox.nrcore.utils.ConfigUtils;
 import me.rownox.nrcore.utils.command.CommandCore;
 import me.rownox.nrcore.utils.command.CommandFunction;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Sound;
@@ -14,6 +15,7 @@ import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import static me.rownox.nrcore.utils.PlayerUtils.checkPerms;
+import static me.rownox.nrcore.utils.PlayerUtils.healPlr;
 
 public class SpawnCommandFunction extends CommandCore implements CommandFunction {
     private final String spawnType;
@@ -26,13 +28,23 @@ public class SpawnCommandFunction extends CommandCore implements CommandFunction
 
     @Override
     public void execute(CommandSender sender, String[] args) {
+
+        final NRCore ROWCORE = NRCore.getInstance();
+        final FileConfiguration CONFIG = NRCore.getInstance().config;
+
+        if (args.length >= 1) {
+            if (!checkPerms(sender, "spawn", ".others")) return;
+            Player target = Bukkit.getPlayer(args[0]);
+            target.teleport(ConfigUtils.spawn);
+            target.playSound(target.getLocation(), Sound.valueOf(CONFIG.getString("teleport.sound")), 1, 1);
+
+        }
+
         if (sender instanceof Player p) {
 
-            final NRCore ROWCORE = NRCore.getInstance();
-            final FileConfiguration CONFIG = NRCore.getInstance().config;
-
             if (spawnType.equals("set")) {
-                if (checkPerms(p,"spawn.set")) return;
+
+                if (!checkPerms(p,"spawn.set")) return;
 
                 Location loc = p.getLocation();
                 ConfigUtils.setSpawn(loc);

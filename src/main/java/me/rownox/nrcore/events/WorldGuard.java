@@ -33,8 +33,7 @@ public class WorldGuard implements Listener {
         WorldGuardCancel(e, "block-state-change");
     }
 
-
-    @SuppressWarnings("all")
+     @SuppressWarnings("all")
     private void WorldGuardCancel(Cancellable e, String path) {
         if (CONFIG.getBoolean("world-guard." + path)) {
             e.setCancelled(true);

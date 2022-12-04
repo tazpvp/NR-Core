@@ -14,10 +14,12 @@ public class Hologram {
     private String[] text;
     @Getter
     private Location spawnLoc;
+    @Getter
+    private boolean baby;
 
     private List<ArmorStand> armorStands;
 
-    public Hologram(String[] text, Location spawnLoc) {
+    public Hologram(String[] text, Location spawnLoc, boolean baby) {
         this.text = text;
         this.spawnLoc = spawnLoc;
         this.armorStands = new LinkedList<>();
@@ -38,6 +40,7 @@ public class Hologram {
         as.setGravity(false);
         as.setInvisible(true);
         as.setInvulnerable(true);
+        as.setSmall(baby);
 
         as.setCustomNameVisible(true);
         as.setCustomName(ChatUtils.chat(name));

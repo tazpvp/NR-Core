@@ -1,5 +1,6 @@
 package world.ntdi.nrcore.utils;
 
+import org.bukkit.event.Cancellable;
 import world.ntdi.nrcore.NRCore;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -29,6 +30,12 @@ public final class ConfigUtils {
         CONFIG.set("spawn.z", loc.getBlockZ());
         CONFIG.set("spawn.yaw", loc.getYaw());
         CONFIG.set("spawn.pitch", loc.getPitch());
+    }
+
+    public static void cancelWG(Cancellable e, final String path) {
+        if (CONFIG.getBoolean("world-guard." + path)) {
+            e.setCancelled(true);
+        }
     }
 
 

@@ -13,6 +13,12 @@ jobs:
         with:
           java-version: '18'
           distribution: 'adopt'
+      - uses: actions/delete-package-versions@v3
+        with:
+          owner: 'tazpvp'
+          repo: 'NR-Core'
+          package-name: 'world.ntdi.nrcore'
+          token: ${{ secrets.GIT_TOKEN }}
       - name: Publish package
         run: mvn --batch-mode deploy
         env:

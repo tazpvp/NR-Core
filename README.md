@@ -1,5 +1,5 @@
 # NRCore
-A lightweight plugin for all the basic and essential server commands.
+A lightweight plugin for all the basic and essential server commands and developer utilities
  
 ## Maven:
 ```xml

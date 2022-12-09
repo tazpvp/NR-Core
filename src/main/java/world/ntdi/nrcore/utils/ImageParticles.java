@@ -34,18 +34,18 @@ public class ImageParticles {
         anchor=new Vector(x, y, 0);
     }
     /**
-     * Sets the ratio between blocks & pixels i.e block/pixel (0.1 means 10 pixels in 1 block space)
+     * Sets the ratio between blocks and pixels i.e block/pixel (0.1 means 10 pixels in 1 block space)
      * @param ratio
      */
     public void setDisplayRatio(double ratio) {
         this.ratio=ratio;
     }
     /**
-     * Get a map of locations & colors on which particles are to be displayed
+     * Get a map of locations and colors on which particles are to be displayed
      * @param location of the anchor point
      * @param pitch (if you want picture to be rotated)
      * @param yaw  (if you want picture to be rotated)
-     * @return map of the locations & color
+     * @return map of the locations and color
      */
     public Map<Location, Color> getParticles(Location location, double pitch, double yaw) {
         Map<Location, Color> map=new HashMap<Location, Color>();
@@ -59,9 +59,9 @@ public class ImageParticles {
         return map;
     }
     /**
-     * Get a map of locations & colors on which particles are to be displayed
-     * @param location
-     * @return
+     * Get a map of locations and colors on which particles are to be displayed
+     * @param location The location for to spawn the particles
+     * @return Map of Location, Color of the particles
      */
     public Map<Location, Color> getParticles(Location location) {
         return getParticles(location, location.getPitch(), location.getYaw());

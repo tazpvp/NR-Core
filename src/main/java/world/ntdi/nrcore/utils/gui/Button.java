@@ -6,7 +6,11 @@ import org.bukkit.inventory.ItemStack;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
+/**
+ * Button Class for creating GUI buttons
+ */
 public abstract class Button {
+
     protected ItemStack item;
     private int slot;
 
@@ -87,5 +91,9 @@ public abstract class Button {
         this.item = item;
     }
 
+    /**
+     * When the button is clicked
+     * @param var1 The inventory click event
+     */
     public abstract void onClick(InventoryClickEvent var1);
 }

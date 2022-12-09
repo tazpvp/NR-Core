@@ -50,7 +50,7 @@ public class GUI implements Listener {
     /**
      * Generate an GUI
      * @param name The name of the GUI
-     * @param rows The amount of rows needed for a gui (<=6)
+     * @param rows The amount of rows needed for a gui (less than or equal to 6)
      */
     public GUI(String name, int rows) {
         this(Bukkit.createInventory((InventoryHolder)null, rows * 9, name));

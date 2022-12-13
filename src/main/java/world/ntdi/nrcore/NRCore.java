@@ -1,15 +1,13 @@
 package world.ntdi.nrcore;
 
 import lombok.Getter;
+import org.bukkit.GameMode;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.plugin.java.JavaPlugin;
 import world.ntdi.nrcore.commands.*;
 import world.ntdi.nrcore.events.WorldGuard;
 import world.ntdi.nrcore.utils.ConfigUtils;
 import world.ntdi.nrcore.utils.sql.DatabaseThread;
-import org.bukkit.GameMode;
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.plugin.java.JavaPlugin;
-
-import java.util.concurrent.CompletableFuture;
 
 public final class NRCore extends JavaPlugin {
     public static NRCore instance;
@@ -30,7 +28,8 @@ public final class NRCore extends JavaPlugin {
 
         if (ConfigUtils.SQLENABLED) {
             databaseThread = new DatabaseThread();
-            CompletableFuture.runAsync(databaseThread::start); //.thenRun(SQLHelper::initTable)
+            databaseThread.start();
+//            CompletableFuture.runAsync(databaseThread::start);
         }
     }
 

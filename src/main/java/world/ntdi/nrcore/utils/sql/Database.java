@@ -16,7 +16,7 @@ public class Database {
 
     public Database() {
         if (ConfigUtils.SQLENABLED) {
-            Bukkit.getLogger().info("Attempting to connect to SQL Database");
+            Bukkit.getLogger().info("Attempting to connect to Postgresql Database");
             try {
                 Class.forName("org.postgresql.Driver");
                 c = DriverManager.getConnection(
@@ -24,6 +24,7 @@ public class Database {
                         ConfigUtils.SQLUSER, ConfigUtils.SQLPASSWORD
                 );
                 stmt = c.createStatement();
+                Bukkit.getLogger().info("Connected to Postgresql DB!");
             } catch (Exception e) {
                 e.printStackTrace();
             }

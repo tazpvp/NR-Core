@@ -1,6 +1,6 @@
 package world.ntdi.nrcore;
 
-import lombok.Getter;
+import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -8,10 +8,13 @@ import world.ntdi.nrcore.commands.*;
 import world.ntdi.nrcore.events.WorldGuard;
 import world.ntdi.nrcore.utils.ConfigUtils;
 import world.ntdi.nrcore.utils.sql.DatabaseThread;
+import world.ntdi.nrcore.utils.sql.SQLHelper;
+
+import java.util.concurrent.CompletableFuture;
 
 public final class NRCore extends JavaPlugin {
     public static NRCore instance;
-    @Getter
+
     private static DatabaseThread databaseThread;
     public FileConfiguration config;
 
@@ -26,16 +29,25 @@ public final class NRCore extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new WorldGuard(), this);
 
-        if (ConfigUtils.SQLENABLED) {
-            databaseThread = new DatabaseThread();
-            databaseThread.start();
-//            CompletableFuture.runAsync(databaseThread::start);
-        }
+        resetDatabaseConnection();
+        Bukkit.getLogger().info(String.valueOf(SQLHelper.ifRowExists("stats", "id", "huaman")));
     }
 
     @Override
     public void onDisable() {
+        databaseThread.getDB().closeDefault();
+    }
 
+    public static void resetDatabaseConnection() {
+        if (ConfigUtils.SQLENABLED) {
+            databaseThread = new DatabaseThread();
+            CompletableFuture.runAsync(databaseThread::start);
+        }
+    }
+
+
+    public static DatabaseThread getDatabaseThread() {
+        return databaseThread;
     }
 
     public void registerCommands() { //makes sure the plugin knows about the command classes

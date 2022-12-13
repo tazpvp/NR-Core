@@ -2,3 +2,4 @@ name: NRCore
 version: '${project.version}'
 main: world.ntdi.nrcore.NRCore
 api-version: 1.19
+load: POSTWORLD

@@ -9,7 +9,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public final class SQLHelper {
-    private static final Statement STMT = NRCore.getDatabaseThread().getDB().getStmt();
+    private static final Statement STMT;
+
+    static {
+        if (NRCore.getDatabaseThread() == null) {
+            NRCore.resetDatabaseConnection();
+        }
+        STMT = NRCore.getDatabaseThread().getDB().getStmt();
+    }
 
     /**
      * Create a SQL Table from the given parameters. NOTE: MUST BE VALID SQL

@@ -7,6 +7,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import world.ntdi.nrcore.commands.*;
 import world.ntdi.nrcore.events.WorldGuard;
 import world.ntdi.nrcore.utils.ConfigUtils;
+import world.ntdi.nrcore.utils.sql.Database;
 import world.ntdi.nrcore.utils.sql.DatabaseThread;
 import world.ntdi.nrcore.utils.sql.SQLHelper;
 
@@ -40,7 +41,7 @@ public final class NRCore extends JavaPlugin {
 
     public static void resetDatabaseConnection() {
         if (ConfigUtils.SQLENABLED) {
-            databaseThread = new DatabaseThread();
+            databaseThread = new DatabaseThread(new Database());
             CompletableFuture.runAsync(databaseThread::start);
         }
     }

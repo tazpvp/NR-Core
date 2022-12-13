@@ -9,11 +9,16 @@ public class DatabaseThread extends Thread {
 
     private Database DB;
 
+    public DatabaseThread(Database DB) {
+        this.DB = DB;
+        online = true;
+    }
+
     @Override
     public void run() {
-        DB = new Database();
-        online = true;
-        Bukkit.getLogger().info("Online!");
+        while (!online) {
+            Bukkit.getLogger().info("Waiting for connection to circumvent checksum h26 file");
+        }
     }
 
     public Database getDB() {

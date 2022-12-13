@@ -17,7 +17,7 @@ public final class NRCore extends JavaPlugin {
     public static NRCore instance;
 
     private static DatabaseThread databaseThread;
-    public FileConfiguration config;
+    public static FileConfiguration config;
 
     @Override
     public void onEnable() {

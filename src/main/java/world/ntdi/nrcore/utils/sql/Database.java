@@ -29,6 +29,9 @@ public class Database {
                 e.printStackTrace();
             }
         }
+        if (c == null || stmt == null) {
+            Bukkit.getLogger().severe("Connection statement INVALID");
+        }
     }
 
     public void closeDefault() {

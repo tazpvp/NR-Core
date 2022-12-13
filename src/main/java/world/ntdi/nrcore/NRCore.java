@@ -15,11 +15,12 @@ public final class NRCore extends JavaPlugin {
     public static NRCore instance;
     @Getter
     private static DatabaseThread databaseThread;
-    public FileConfiguration config = this.getConfig();
+    public FileConfiguration config;
 
     @Override
     public void onEnable() {
         instance = this;
+        config = this.config;
         registerCommands();
 
         config.addDefault("no-permission", " &cYou are missing the permission: ");

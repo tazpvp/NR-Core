@@ -10,7 +10,7 @@ import java.util.List;
 
 public final class ConfigUtils {
 
-    private static final FileConfiguration CONFIG = NRCore.getInstance().config;
+    private static final FileConfiguration CONFIG = NRCore.getInstance().getConfig();
 
     public static Location spawn;
 

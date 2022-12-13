@@ -14,14 +14,11 @@ import world.ntdi.nrcore.utils.sql.SQLHelper;
 import java.util.concurrent.CompletableFuture;
 
 public final class NRCore extends JavaPlugin {
-    public static NRCore instance;
-
     private static DatabaseThread databaseThread;
     public static FileConfiguration config;
 
     @Override
     public void onEnable() {
-        instance = this;
         config = this.getConfig();
         registerCommands();
 
@@ -65,6 +62,6 @@ public final class NRCore extends JavaPlugin {
     }
 
     public static NRCore getInstance(){
-        return instance;
+        return (NRCore) Bukkit.getPluginManager().getPlugin("NRCore");
     }
 }

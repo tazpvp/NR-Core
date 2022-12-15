@@ -22,9 +22,18 @@ public class Hologram {
     public Hologram(String[] text, Location spawnLoc, boolean baby) {
         this.text = text;
         this.spawnLoc = spawnLoc;
+        this.baby = baby;
         this.armorStands = new LinkedList<>();
 
         initializeHolograms();
+    }
+
+    public Hologram(String text, Location spawnLoc, boolean baby) {
+        new Hologram(new String[]{text}, spawnLoc, baby);
+    }
+
+    public Hologram(Location spawnLoc, boolean baby, String... text) {
+        new Hologram(text, spawnLoc, baby);
     }
 
     private void initializeHolograms() {
@@ -51,7 +60,7 @@ public class Hologram {
      * Update the hologram's display text
      * @param name The new text for each line
      */
-    public void updateHologram(String[] name) {
+    public void updateHologram(String... name) {
         if (text.length != name.length) {
             throw new ArrayIndexOutOfBoundsException("Cannot add lines to already defined length hologram");
         }

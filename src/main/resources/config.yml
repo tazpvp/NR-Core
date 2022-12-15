@@ -2,6 +2,7 @@ theme:
   main: "&0&0&c&0&c&8"
   secondary: "&0&0&9&6&C&8"
 
+permission-prefix: "nrcore."
 no-permission: " &cYou are missing the permission: "
 
 spawn:

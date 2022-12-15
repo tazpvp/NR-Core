@@ -54,9 +54,9 @@ public abstract class CommandCore extends BukkitCommand {
      * @param permission Permission for the command
      * @param alias Aliases, can be blank
      */
-    public CommandCore(@NonNull final String name, final String permission, @NonNull final String... alias) {
+    public CommandCore(@NonNull final String name, final String permission, final String... alias) {
         super(name, "", "/" + name, Arrays.asList(alias));
-        setPermission("rowcore."+permission);
+        setPermission(ConfigUtils.PERMISSION_PREFIX+permission);
         register();
     }
 

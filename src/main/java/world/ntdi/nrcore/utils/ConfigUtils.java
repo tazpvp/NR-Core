@@ -23,6 +23,7 @@ public final class ConfigUtils {
     public static String SQLUSER = CONFIG.getString("sql.sql-user");
     public static String SQLPASSWORD = CONFIG.getString("sql.sql-password");
 
+    public static String PERMISSION_PREFIX = CONFIG.getString("permission-prefix");
     public static void setSpawn(Location loc) {
         CONFIG.set("spawn.world", loc.getWorld().getName());
         CONFIG.set("spawn.x", loc.getBlockX());

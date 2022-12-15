@@ -5,7 +5,7 @@ import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.Damageable;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,12 +23,14 @@ public class ItemBuilder {
     protected boolean glow;
     protected Material material;
     protected boolean unbreakable;
+    protected short durability;
 
     public ItemBuilder() {
         this.material = Material.BEDROCK;
         this.lore = new ArrayList<>();
         this.enchantments = new HashMap<>();
         this.flags = new ArrayList<>();
+        this.durability = this.material.getMaxDurability();
     }
 
     public ItemBuilder item(@NonNull final ItemStack item) {
@@ -102,12 +104,17 @@ public class ItemBuilder {
         return this;
     }
 
+    public ItemBuilder durability(short durability) {
+        this.durability = durability;
+        return this;
+    }
+
     public ItemStack build() {
 
         if (this.item == null) {
             this.item = new ItemStack(this.material);
         }
-        final ItemMeta meta = item.getItemMeta();
+        final Damageable meta = (Damageable) item.getItemMeta();
 
         if (this.amount != 0) {
             item.setAmount(this.amount);
@@ -139,6 +146,10 @@ public class ItemBuilder {
 
         if (this.modelData != 0) {
             meta.setCustomModelData(this.modelData);
+        }
+
+        if (this.durability != this.material.getMaxDurability()) {
+            meta.setDamage(this.durability);
         }
 
         item.setItemMeta(meta);

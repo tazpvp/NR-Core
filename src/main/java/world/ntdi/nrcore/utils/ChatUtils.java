@@ -9,7 +9,7 @@ public final class ChatUtils {
     }
 
     /**
-     * https://www.baeldung.com/java-remove-last-character-of-string
+     * <a href="https://www.baeldung.com/java-remove-last-character-of-string">...</a>
      * @param s String to affect
      * @return The new string without the last character
      */

@@ -7,7 +7,7 @@ Check out the [Wiki]() for an explanation of each of the functions in NR-Core
 Maven: 
 
 ```xml
-repository>
+<repository>
     <id>github</id>
     <url>https://maven.pkg.github.com/tazpvp/NR-Core</url>
 </repository>

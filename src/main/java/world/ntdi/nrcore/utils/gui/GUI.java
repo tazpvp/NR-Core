@@ -31,6 +31,7 @@ public class GUI implements Listener {
     private Map<Integer, Button> buttons;
     private boolean returnItems;
     private boolean destroyOnClose;
+    private boolean destroyed;
 
     /**
      * Generate an GUI
@@ -44,6 +45,7 @@ public class GUI implements Listener {
         this.returnItems = true;
         this.destroyOnClose = true;
         this.inventory = inventory;
+        this.destroyed = false;
         Bukkit.getPluginManager().registerEvents(this, NRCore.getInstance());
     }
 
@@ -308,6 +310,7 @@ public class GUI implements Listener {
                 }
             }
         }
+        this.destroyed = true;
 
         this.inventory.clear();
         this.buttons.clear();

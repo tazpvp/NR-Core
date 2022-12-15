@@ -332,6 +332,14 @@ public class GUI implements Listener {
     }
 
     /**
+     * If the GUI has been destroyed or not.
+     * @return boolean
+     */
+    public boolean getDestroyed() {
+        return this.destroyed;
+    }
+
+    /**
      * What happens when a item is dragged to an open slot.
      * @param onDrag The InventoryDragEvent
      */

@@ -33,7 +33,9 @@ public final class NRCore extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        databaseThread.getDB().closeDefault();
+        if (ConfigUtils.SQLENABLED) {
+            databaseThread.getDB().closeDefault();
+        }
     }
 
     public static void resetDatabaseConnection() {

@@ -19,6 +19,9 @@ jobs:
 #           repo: 'NR-Core'
 #           package-name: 'world.ntdi.nrcore'
 #           token: ${{ secrets.GIT_TOKEN }}
+      - uses: SpraxDev/Action-SpigotMC@v4
+        with:
+          versions: 1.19.2
       - name: Publish package
         run: mvn --batch-mode deploy
         env:

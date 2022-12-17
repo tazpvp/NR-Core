@@ -25,6 +25,10 @@ help:
 world-guard:
   block-state-change: true
 
+messaging:
+  sent: "&3To &b%player% &f%msg%"
+  from: "&3From &b%player% &f%msg%"
+
 # SQL DB ONLY USE FOR DEVELOPERS USING API
 sql:
   # Enable usage of a sql Database

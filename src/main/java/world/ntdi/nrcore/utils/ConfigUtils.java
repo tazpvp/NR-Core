@@ -18,6 +18,9 @@ public final class ConfigUtils {
 
     public static List<String> help = CONFIG.getStringList("help");
 
+    public static String SENT_MESSAGE = CONFIG.getString("messaging.sent");
+    public static String FROM_MESSAGE = CONFIG.getString("messaging.from");
+
     public static Boolean SQLENABLED = CONFIG.getBoolean("sql.sql-enabled");
     public static String SQLURL = CONFIG.getString("sql.sql-url");
     public static String SQLUSER = CONFIG.getString("sql.sql-user");

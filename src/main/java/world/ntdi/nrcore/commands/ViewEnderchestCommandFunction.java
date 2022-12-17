@@ -1,6 +1,7 @@
 package world.ntdi.nrcore.commands;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import world.ntdi.nrcore.utils.command.CommandCore;
@@ -16,10 +17,12 @@ public class ViewEnderchestCommandFunction extends CommandCore implements Comman
     @Override
     public void execute(CommandSender sender, String[] args) {
         if (sender instanceof Player p) {
-            if (args.length > 1) {
+            if (args.length > 0) {
                 Player target = Bukkit.getPlayer(args[0]);
                 if (target != null) {
                     p.openInventory(target.getEnderChest());
+                } else {
+                    p.sendMessage(ChatColor.RED + "Invalid target");
                 }
             }
         }

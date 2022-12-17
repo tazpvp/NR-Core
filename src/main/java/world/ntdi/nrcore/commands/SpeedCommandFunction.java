@@ -15,7 +15,7 @@ public class SpeedCommandFunction extends CommandCore implements CommandFunction
     @Override
     public void execute(CommandSender sender, String[] args) {
         if (sender instanceof Player p) {
-            if (args.length > 1) {
+            if (args.length > 0) {
                 int speed = Integer.parseInt(args[0]);
                 p.setWalkSpeed(speed);
             }

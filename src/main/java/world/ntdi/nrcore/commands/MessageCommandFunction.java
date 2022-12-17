@@ -17,6 +17,7 @@ public class MessageCommandFunction extends CommandCore implements CommandFuncti
     public MessageCommandFunction() {
         super("dm", null, "re");
         setDefaultFunction(this);
+        setUsage("/dm [player] <message>");
     }
 
     @Override

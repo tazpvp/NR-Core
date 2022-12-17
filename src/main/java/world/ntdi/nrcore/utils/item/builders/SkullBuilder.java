@@ -1,13 +1,18 @@
 package world.ntdi.nrcore.utils.item.builders;
 
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
 import lombok.NonNull;
 import org.bukkit.Material;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 
+import java.io.InputStreamReader;
 import java.lang.reflect.Field;
+import java.net.URL;
 import java.util.UUID;
 
 public class SkullBuilder extends ItemBuilder {
@@ -22,6 +27,23 @@ public class SkullBuilder extends ItemBuilder {
     public SkullBuilder setHeadTexture(String texture) {
         this.texture = texture;
         return this;
+    }
+
+    public SkullBuilder setHeadTexture(OfflinePlayer p) {
+        return setHeadTexture(p.getUniqueId());
+    }
+
+    public SkullBuilder setHeadTexture(UUID uuid)  {
+        try {
+            URL url = new URL("https://sessionserver.mojang.com/session/minecraft/profile/" + uuid);
+            InputStreamReader read = new InputStreamReader(url.openStream());
+            JsonObject textureProperty = new JsonParser().parse(read).getAsJsonObject().get("properties").getAsJsonArray().get(0).getAsJsonObject();
+            String texture = textureProperty.get("value").getAsString();
+            return setHeadTexture(texture);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException();
+        }
     }
 
     @Override

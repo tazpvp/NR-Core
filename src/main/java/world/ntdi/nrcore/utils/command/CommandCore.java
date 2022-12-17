@@ -2,7 +2,7 @@ package world.ntdi.nrcore.utils.command;
 
 import lombok.NonNull;
 import lombok.Setter;
-import world.ntdi.nrcore.utils.ConfigUtils;
+import world.ntdi.nrcore.utils.config.ConfigUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandMap;
@@ -40,11 +40,6 @@ public abstract class CommandCore extends BukkitCommand {
         }
     }
 
-//    @Override
-//    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-//        return command(sender, command, label, args);
-//    }
-
     @Setter
     private CommandFunction<? extends CommandSender> defaultFunction;
 
@@ -59,13 +54,6 @@ public abstract class CommandCore extends BukkitCommand {
         setPermission(ConfigUtils.PERMISSION_PREFIX+permission);
         register();
     }
-
-//    public CommandCore(String commandName) {
-//        super();
-//        this.commandName = commandName;
-//
-//        RowCore.getInstance().commands.put(this.commandName, this);
-//    }
 
     @SuppressWarnings("unchecked")
     private final void register() {

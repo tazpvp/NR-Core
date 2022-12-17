@@ -1,6 +1,6 @@
 package world.ntdi.nrcore.commands;
 
-import world.ntdi.nrcore.utils.ConfigUtils;
+import world.ntdi.nrcore.utils.config.ConfigUtils;
 import world.ntdi.nrcore.utils.command.CommandCore;
 import world.ntdi.nrcore.utils.command.CommandFunction;
 import org.bukkit.ChatColor;

@@ -4,7 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import world.ntdi.nrcore.utils.ChatUtils;
-import world.ntdi.nrcore.utils.ConfigUtils;
+import world.ntdi.nrcore.utils.config.ConfigUtils;
 import world.ntdi.nrcore.utils.command.CommandCore;
 import world.ntdi.nrcore.utils.command.CommandFunction;
 

@@ -6,7 +6,7 @@ import org.bukkit.event.block.BlockFormEvent;
 import org.bukkit.event.block.BlockFromToEvent;
 import org.bukkit.event.block.BlockIgniteEvent;
 import org.bukkit.event.block.BlockPhysicsEvent;
-import world.ntdi.nrcore.utils.ConfigUtils;
+import world.ntdi.nrcore.utils.config.ConfigUtils;
 
 public class WorldGuard implements Listener {
 

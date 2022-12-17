@@ -5,6 +5,7 @@ import org.bukkit.attribute.Attribute;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
+import world.ntdi.nrcore.utils.config.ConfigUtils;
 
 public final class PlayerUtils {
 

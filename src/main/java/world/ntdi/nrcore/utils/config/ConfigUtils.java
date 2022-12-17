@@ -1,4 +1,4 @@
-package world.ntdi.nrcore.utils;
+package world.ntdi.nrcore.utils.config;
 
 import org.bukkit.event.Cancellable;
 import world.ntdi.nrcore.NRCore;

@@ -1,7 +1,7 @@
 package world.ntdi.nrcore.utils.sql;
 
 import lombok.Getter;
-import world.ntdi.nrcore.utils.ConfigUtils;
+import world.ntdi.nrcore.utils.config.ConfigUtils;
 import org.bukkit.Bukkit;
 
 import java.sql.Connection;

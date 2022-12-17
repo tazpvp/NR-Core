@@ -56,6 +56,8 @@ public final class NRCore extends JavaPlugin {
         new SpawnCommandFunction("");
         new HealCommandFunction();
         new FlyCommandFunction();
+        new ViewEnderchestCommandFunction();
+        new MessageCommandFunction();
         new GamemodeCommandFunction(GameMode.CREATIVE, "gmc");
         new GamemodeCommandFunction(GameMode.SURVIVAL, "gms");
         new GamemodeCommandFunction(GameMode.ADVENTURE, "gma");

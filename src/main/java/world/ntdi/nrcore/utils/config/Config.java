@@ -3,6 +3,7 @@ package world.ntdi.nrcore.utils.config;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.plugin.java.JavaPlugin;
 import world.ntdi.nrcore.NRCore;
 
 import javax.annotation.Nonnull;
@@ -13,12 +14,14 @@ public class Config extends YamlConfiguration {
 
     private final String filename;
     private final File file;
+    private final JavaPlugin plugin;
 
     /**
      * Creates a new config with the given filename.
      */
-    public Config(@Nonnull final String filename) {
+    public Config(@Nonnull final String filename, JavaPlugin plugin) {
         this.filename = filename;
+        this.plugin = plugin;
         file = new File(NRCore.getInstance().getDataFolder(), filename);
         loadDefaults();
         reload();
@@ -64,7 +67,7 @@ public class Config extends YamlConfiguration {
                 throw new UncheckedIOException(new IOException("Could not create directory " + parent.getAbsolutePath()));
 
             }
-            NRCore.getInstance().saveResource(filename, false);
+            plugin.saveResource(filename, false);
         }
     }
 

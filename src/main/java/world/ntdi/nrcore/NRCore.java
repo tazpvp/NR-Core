@@ -9,7 +9,6 @@ import world.ntdi.nrcore.events.WorldGuard;
 import world.ntdi.nrcore.utils.config.ConfigUtils;
 import world.ntdi.nrcore.utils.sql.Database;
 import world.ntdi.nrcore.utils.sql.DatabaseThread;
-import world.ntdi.nrcore.utils.sql.SQLHelper;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -28,7 +27,6 @@ public final class NRCore extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new WorldGuard(), this);
 
         resetDatabaseConnection();
-        Bukkit.getLogger().info(String.valueOf(SQLHelper.ifRowExists("stats", "id", "huaman")));
     }
 
     @Override

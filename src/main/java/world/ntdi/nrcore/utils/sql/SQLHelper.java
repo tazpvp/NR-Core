@@ -7,6 +7,8 @@ import javax.annotation.Nonnull;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public final class SQLHelper {
     private static final Statement STMT;
@@ -185,5 +187,18 @@ public final class SQLHelper {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static List<Object> getListOfColumn(@Nonnull final String NAME, @Nonnull final String TYPE) {
+        List<Object> values = new ArrayList<>();
+        try {
+            ResultSet rs = STMT.executeQuery("SELECT DISTINCT " + TYPE + " FROM " + NAME);
+            for (int i = 0; i < rs.getFetchSize(); i++) {
+                values.add(rs.getObject(i));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return values;
     }
 }

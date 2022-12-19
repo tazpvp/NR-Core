@@ -201,4 +201,12 @@ public final class SQLHelper {
         }
         return values;
     }
+
+    public static void deleteRow(@Nonnull final String NAME, @Nonnull final String ID, @Nonnull final String ID_VALUE) {
+        try {
+            STMT.executeUpdate("DELETE FROM " + NAME + " WHERE " + ID + "='" + ID_VALUE + "'");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

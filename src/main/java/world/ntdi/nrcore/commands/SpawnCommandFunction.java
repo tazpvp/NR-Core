@@ -1,6 +1,7 @@
 package world.ntdi.nrcore.commands;
 
 import world.ntdi.nrcore.NRCore;
+import world.ntdi.nrcore.events.MoveEvent;
 import world.ntdi.nrcore.utils.config.ConfigUtils;
 import world.ntdi.nrcore.utils.command.CommandCore;
 import world.ntdi.nrcore.utils.command.CommandFunction;
@@ -41,31 +42,35 @@ public class SpawnCommandFunction extends CommandCore implements CommandFunction
         }
 
         if (sender instanceof Player p) {
-
             if (spawnType.equals("set")) {
-
                 if (!PlayerUtils.checkPerms(p,"spawn.set")) return;
 
                 Location loc = p.getLocation();
                 ConfigUtils.setSpawn(loc);
 
             } else {
+                if (PlayerUtils.checkPerms(p,"spawn.bypass")) {
+                    p.teleport(ConfigUtils.spawn);
+                    p.sendMessage(ChatColor.DARK_AQUA + "Teleportation complete.");
+                } else {
+                    p.sendMessage(ChatColor.DARK_AQUA + "You'll be teleported to spawn in " + ChatColor.AQUA + CONFIG.getString("teleport.delay") + " Seconds" + ChatColor.DARK_AQUA + " Do not move.");
+                    p.setMetadata("goingToSpawn", new FixedMetadataValue(ROWCORE, true));
+                    MoveEvent.loc.put(p.getUniqueId(), p.getLocation());
 
-                p.sendMessage(ChatColor.DARK_AQUA + "You'll be teleported to spawn in " + ChatColor.AQUA + CONFIG.getString("teleport.delay") + " Seconds" + ChatColor.DARK_AQUA + " Do not move.");
-                p.setMetadata("goingToSpawn", new FixedMetadataValue(ROWCORE, true));
-                new BukkitRunnable(){
-                    @Override
-                    public void run() {
-                        if (p.hasMetadata("goingToSpawn")){
-                            p.removeMetadata("goingToSpawn", ROWCORE);
+                    new BukkitRunnable(){
+                        @Override
+                        public void run() {
+                            if (p.hasMetadata("goingToSpawn")){
+                                p.removeMetadata("goingToSpawn", ROWCORE);
 
-                            p.teleport(ConfigUtils.spawn);
-                            p.sendMessage(ChatColor.DARK_AQUA + "Teleportation complete.");
+                                p.teleport(ConfigUtils.spawn);
+                                p.sendMessage(ChatColor.DARK_AQUA + "Teleportation complete.");
 
-                            p.playSound(p.getLocation(), Sound.valueOf(CONFIG.getString("teleport.sound")), 1, 1);
+                                p.playSound(p.getLocation(), Sound.valueOf(CONFIG.getString("teleport.sound")), 1, 1);
+                            }
                         }
-                    }
-                }.runTaskLater(ROWCORE, 5 * 20);
+                    }.runTaskLater(ROWCORE, 5 * 20);
+                }
             }
         }
     }

@@ -5,6 +5,7 @@ import org.bukkit.GameMode;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 import world.ntdi.nrcore.commands.*;
+import world.ntdi.nrcore.events.MoveEvent;
 import world.ntdi.nrcore.events.WorldGuard;
 import world.ntdi.nrcore.utils.config.ConfigUtils;
 import world.ntdi.nrcore.utils.sql.Database;
@@ -25,6 +26,7 @@ public final class NRCore extends JavaPlugin {
         saveDefaultConfig();
 
         getServer().getPluginManager().registerEvents(new WorldGuard(), this);
+        getServer().getPluginManager().registerEvents(new MoveEvent(), this);
 
         resetDatabaseConnection();
     }

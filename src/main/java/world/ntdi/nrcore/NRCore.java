@@ -5,17 +5,23 @@ import org.bukkit.GameMode;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 import world.ntdi.nrcore.commands.*;
+import world.ntdi.nrcore.events.InvEvent;
 import world.ntdi.nrcore.events.MoveEvent;
 import world.ntdi.nrcore.events.WorldGuard;
 import world.ntdi.nrcore.utils.config.ConfigUtils;
 import world.ntdi.nrcore.utils.sql.Database;
 import world.ntdi.nrcore.utils.sql.DatabaseThread;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
 public final class NRCore extends JavaPlugin {
+
     private static DatabaseThread databaseThread;
     public static FileConfiguration config;
+    public static List<UUID> invsee = new ArrayList<>();
 
     @Override
     public void onEnable() {
@@ -27,6 +33,7 @@ public final class NRCore extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new WorldGuard(), this);
         getServer().getPluginManager().registerEvents(new MoveEvent(), this);
+        getServer().getPluginManager().registerEvents(new InvEvent(), this);
 
         resetDatabaseConnection();
     }

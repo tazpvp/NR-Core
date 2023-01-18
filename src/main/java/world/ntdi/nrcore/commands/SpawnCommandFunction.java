@@ -16,6 +16,8 @@ import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.scheduler.BukkitRunnable;
 import world.ntdi.nrcore.utils.PlayerUtils;
 
+import java.util.List;
+
 import static world.ntdi.nrcore.utils.PlayerUtils.checkPerms;
 
 public class SpawnCommandFunction extends CommandCore implements CommandFunction {
@@ -73,5 +75,10 @@ public class SpawnCommandFunction extends CommandCore implements CommandFunction
                 }
             }
         }
+    }
+
+    @Override
+    public List<String> tabCompletion(CommandSender sender, String[] args) {
+        return null;
     }
 }

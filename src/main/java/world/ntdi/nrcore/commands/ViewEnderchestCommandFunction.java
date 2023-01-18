@@ -7,6 +7,8 @@ import org.bukkit.entity.Player;
 import world.ntdi.nrcore.utils.command.CommandCore;
 import world.ntdi.nrcore.utils.command.CommandFunction;
 
+import java.util.List;
+
 public class ViewEnderchestCommandFunction extends CommandCore implements CommandFunction {
 
     public ViewEnderchestCommandFunction() {
@@ -26,5 +28,10 @@ public class ViewEnderchestCommandFunction extends CommandCore implements Comman
                 }
             }
         }
+    }
+
+    @Override
+    public List<String> tabCompletion(CommandSender sender, String[] args) {
+        return null;
     }
 }

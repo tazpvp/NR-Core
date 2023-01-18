@@ -8,11 +8,18 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
+import java.util.List;
+
 public class WorldGuardCommandFunction extends CommandCore implements CommandFunction {
 
     public WorldGuardCommandFunction(@NonNull String name, String permission, @NonNull String... alias) {
         super(name, permission, alias);
         setDefaultFunction(this);
+    }
+
+    @Override
+    public List<String> tabCompletion(CommandSender sender, String[] args) {
+        return null;
     }
 
     @Override

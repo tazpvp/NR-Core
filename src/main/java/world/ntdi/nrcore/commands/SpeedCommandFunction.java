@@ -7,6 +7,8 @@ import org.bukkit.entity.Player;
 import world.ntdi.nrcore.utils.command.CommandCore;
 import world.ntdi.nrcore.utils.command.CommandFunction;
 
+import java.util.List;
+
 public class SpeedCommandFunction extends CommandCore implements CommandFunction {
 
     public SpeedCommandFunction() {
@@ -47,5 +49,10 @@ public class SpeedCommandFunction extends CommandCore implements CommandFunction
             p.setFlySpeed((float) 0.1);
             p.sendMessage(ChatColor.GOLD + "Speed: " + ChatColor.RED + "Default");
         }
+    }
+
+    @Override
+    public List<String> tabCompletion(CommandSender sender, String[] args) {
+        return null;
     }
 }

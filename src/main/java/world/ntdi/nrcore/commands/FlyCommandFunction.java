@@ -7,6 +7,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import world.ntdi.nrcore.utils.PlayerUtils;
 
+import java.util.List;
+
 public class FlyCommandFunction extends CommandCore implements CommandFunction {
 
     public FlyCommandFunction() {
@@ -25,5 +27,10 @@ public class FlyCommandFunction extends CommandCore implements CommandFunction {
                 PlayerUtils.flyPlr(p);
             }
         }
+    }
+
+    @Override
+    public List<String> tabCompletion(CommandSender sender, String[] args) {
+        return null;
     }
 }

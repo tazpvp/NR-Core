@@ -10,6 +10,8 @@ import world.ntdi.nrcore.utils.PlayerUtils;
 
 import javax.annotation.Nonnull;
 
+import java.util.List;
+
 import static world.ntdi.nrcore.utils.PlayerUtils.checkPerms;
 
 public class GamemodeCommandFunction extends CommandCore implements CommandFunction {
@@ -45,5 +47,10 @@ public class GamemodeCommandFunction extends CommandCore implements CommandFunct
                 p.sendMessage("Gamemode: " + GAMEMODE.toString().toUpperCase());
             }
         }
+    }
+
+    @Override
+    public List<String> tabCompletion(CommandSender sender, String[] args) {
+        return null;
     }
 }

@@ -8,6 +8,7 @@ import world.ntdi.nrcore.utils.command.CommandCore;
 import world.ntdi.nrcore.utils.command.CommandFunction;
 import world.ntdi.nrcore.utils.item.builders.SkullBuilder;
 
+import java.util.List;
 import java.util.UUID;
 
 public class SkullCommandFunction extends CommandCore implements CommandFunction {
@@ -41,5 +42,10 @@ public class SkullCommandFunction extends CommandCore implements CommandFunction
                 }
             }
         }
+    }
+
+    @Override
+    public List<String> tabCompletion(CommandSender sender, String[] args) {
+        return null;
     }
 }

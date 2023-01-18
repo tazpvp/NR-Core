@@ -8,6 +8,7 @@ import world.ntdi.nrcore.utils.config.ConfigUtils;
 import world.ntdi.nrcore.utils.command.CommandCore;
 import world.ntdi.nrcore.utils.command.CommandFunction;
 
+import java.util.List;
 import java.util.UUID;
 import java.util.WeakHashMap;
 
@@ -59,5 +60,10 @@ public class MessageCommandFunction extends CommandCore implements CommandFuncti
         lastMessage.put(receiver.getUniqueId(), sender.getUniqueId());
         sender.sendMessage(formatTo);
         receiver.sendMessage(formatFrom);
+    }
+
+    @Override
+    public List<String> tabCompletion(CommandSender sender, String[] args) {
+        return null;
     }
 }

@@ -7,6 +7,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import world.ntdi.nrcore.utils.PlayerUtils;
 
+import java.util.List;
+
 import static world.ntdi.nrcore.utils.PlayerUtils.checkPerms;
 
 public class HealCommandFunction extends CommandCore implements CommandFunction {
@@ -27,5 +29,10 @@ public class HealCommandFunction extends CommandCore implements CommandFunction 
                 PlayerUtils.healPlr(p);
             }
         }
+    }
+
+    @Override
+    public List<String> tabCompletion(CommandSender sender, String[] args) {
+        return null;
     }
 }

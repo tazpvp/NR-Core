@@ -8,6 +8,8 @@ import world.ntdi.nrcore.NRCore;
 import world.ntdi.nrcore.utils.command.CommandCore;
 import world.ntdi.nrcore.utils.command.CommandFunction;
 
+import java.util.List;
+
 public class InvseeCommandFunction extends CommandCore implements CommandFunction {
 
     public InvseeCommandFunction() {
@@ -28,5 +30,10 @@ public class InvseeCommandFunction extends CommandCore implements CommandFunctio
                 p.sendMessage("Usage: /invsee <player>");
             }
         }
+    }
+
+    @Override
+    public List<String> tabCompletion(CommandSender sender, String[] args) {
+        return null;
     }
 }

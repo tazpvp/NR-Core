@@ -2,12 +2,9 @@ package world.ntdi.nrcore.utils.command;
 
 import lombok.NonNull;
 import lombok.Setter;
+import org.bukkit.command.*;
 import world.ntdi.nrcore.utils.config.ConfigUtils;
 import org.bukkit.Bukkit;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandMap;
-import org.bukkit.command.CommandSender;
-import org.bukkit.command.SimpleCommandMap;
 import org.bukkit.command.defaults.BukkitCommand;
 import org.bukkit.plugin.SimplePluginManager;
 
@@ -17,7 +14,7 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.HashMap;
 
-public abstract class CommandCore extends BukkitCommand {
+public abstract class CommandCore extends BukkitCommand implements TabCompleter {
     private static final Field COMMAND_MAP_FIELD;
     private static final Field KNOWN_COMMANDS_FIELD;
 

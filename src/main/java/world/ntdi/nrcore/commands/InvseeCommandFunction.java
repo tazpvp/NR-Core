@@ -12,6 +12,7 @@ public class InvseeCommandFunction extends CommandCore implements CommandFunctio
 
     public InvseeCommandFunction() {
         super("invsee", "invsee", "openinv");
+        setDefaultFunction(this);
     }
 
     @Override

@@ -194,10 +194,7 @@ public final class SQLHelper {
         List<Object> values = new ArrayList<>();
         try {
             ResultSet rs = STMT.executeQuery("SELECT DISTINCT " + TYPE + " FROM " + NAME);
-            for (int i = 0; i < rs.getFetchSize(); i++) {
-                values.add(rs.getObject(i));
-                Bukkit.getLogger().info(rs.getObject(i).toString());
-            }
+            Bukkit.getLogger().info(rs.getFetchSize() + "");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

@@ -1,5 +1,6 @@
 package world.ntdi.nrcore.utils.sql;
 
+import org.bukkit.Bukkit;
 import world.ntdi.nrcore.NRCore;
 import world.ntdi.nrcore.utils.ChatUtils;
 
@@ -195,6 +196,7 @@ public final class SQLHelper {
             ResultSet rs = STMT.executeQuery("SELECT DISTINCT " + TYPE + " FROM " + NAME);
             for (int i = 0; i < rs.getFetchSize(); i++) {
                 values.add(rs.getObject(i));
+                Bukkit.getLogger().info(rs.getObject(i).toString());
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

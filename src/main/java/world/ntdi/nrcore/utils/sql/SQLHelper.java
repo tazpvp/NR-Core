@@ -170,6 +170,19 @@ public final class SQLHelper {
         }
     }
 
+
+    public static boolean getBool(@Nonnull final String NAME, @Nonnull final String ID, @Nonnull final String ID_VALUE, @Nonnull final int INDEX) {
+        ResultSet rs = getRs(NAME, ID, ID_VALUE);
+        try {
+            if (rs.next()) {
+                return rs.getBoolean(INDEX);
+            }
+            throw new RuntimeException("No Bool");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     /**
      * Get the Value of a certain column.
      * @param NAME Name of the SQL Table.

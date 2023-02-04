@@ -51,6 +51,6 @@ public class GamemodeCommandFunction extends CommandCore implements CommandFunct
 
     @Override
     public List<String> tabCompletion(CommandSender sender, String[] args) {
-        return null;
+        return List.of("");
     }
 }

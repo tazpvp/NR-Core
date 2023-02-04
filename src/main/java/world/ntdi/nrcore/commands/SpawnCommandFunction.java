@@ -79,6 +79,6 @@ public class SpawnCommandFunction extends CommandCore implements CommandFunction
 
     @Override
     public List<String> tabCompletion(CommandSender sender, String[] args) {
-        return null;
+        return List.of("");
     }
 }

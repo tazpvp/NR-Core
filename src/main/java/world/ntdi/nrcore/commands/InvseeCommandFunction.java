@@ -34,6 +34,6 @@ public class InvseeCommandFunction extends CommandCore implements CommandFunctio
 
     @Override
     public List<String> tabCompletion(CommandSender sender, String[] args) {
-        return null;
+        return List.of("");
     }
 }

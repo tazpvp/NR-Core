@@ -20,10 +20,13 @@
 
     <distributionManagement>
         <repository>
-            <id>github</id>
-            <name>GitHub Packages</name>
-            <url>https://maven.pkg.github.com/tazpvp/NR-Core</url>
+            <id>releases</id>
+            <url>https://repo.ntdi.world/releases</url>
         </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <url>https://repo.ntdi.world/snapshots</url>
+        </snapshotRepository>
     </distributionManagement>
 
     <developers>

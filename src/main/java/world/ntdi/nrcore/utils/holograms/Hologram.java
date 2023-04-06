@@ -1,15 +1,23 @@
 package world.ntdi.nrcore.utils.holograms;
 
 import lombok.Getter;
-import world.ntdi.nrcore.utils.ChatUtils;
 import org.bukkit.Location;
+import org.bukkit.NamespacedKey;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.EntityType;
+import org.bukkit.persistence.PersistentDataType;
+import world.ntdi.nrcore.NRCore;
+import world.ntdi.nrcore.utils.ChatUtils;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.UUID;
 
 public class Hologram {
+    public static NamespacedKey key = new NamespacedKey(NRCore.getInstance(), "Hologram");
+
+    @Getter
+    private UUID id;
     @Getter
     private String[] text;
     @Getter
@@ -20,6 +28,7 @@ public class Hologram {
     private List<ArmorStand> armorStands;
 
     public Hologram(String[] text, Location spawnLoc, boolean baby) {
+        this.id = UUID.randomUUID();
         this.text = text;
         this.spawnLoc = spawnLoc;
         this.baby = baby;
@@ -53,6 +62,9 @@ public class Hologram {
 
         as.setCustomNameVisible(true);
         as.setCustomName(ChatUtils.chat(name));
+
+        as.getPersistentDataContainer().set(Hologram.key, PersistentDataType.STRING, getId().toString());
+
         armorStands.add(as);
     }
 
@@ -85,8 +97,12 @@ public class Hologram {
      * Delete the entire hologram
      */
     public void deleteHologram() {
-        for (ArmorStand as : armorStands) {
-            as.remove();
-        }
+        getSpawnLoc().getWorld().getEntities().stream().forEach(entity -> {
+            if (entity instanceof ArmorStand as) {
+                if (as.getPersistentDataContainer().get(Hologram.key, PersistentDataType.STRING).equals(getId().toString())) {
+                    entity.remove();
+                }
+            }
+        });
     }
 }

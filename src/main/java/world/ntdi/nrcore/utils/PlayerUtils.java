@@ -10,7 +10,7 @@ import world.ntdi.nrcore.utils.config.ConfigUtils;
 public final class PlayerUtils {
 
     private static final FileConfiguration CONFIG = NRCore.getInstance().config;
-    private static final String PREFIX = "rowcore.";
+    private static final String PREFIX = "nrcore.";
 
     public static boolean checkPerms(final CommandSender sender, final String arg1, final String arg2) {
         if (sender.isOp()) return true;

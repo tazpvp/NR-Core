@@ -1,10 +1,10 @@
 package world.ntdi.nrcore.utils.config;
 
-import org.bukkit.event.Cancellable;
-import world.ntdi.nrcore.NRCore;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.event.Cancellable;
+import world.ntdi.nrcore.NRCore;
 
 import java.util.List;
 
@@ -14,19 +14,19 @@ public final class ConfigUtils {
 
     public static Location spawn;
 
-    public static String noPermission = CONFIG.getString("no-permission");
+    public static String noPermission;
 
-    public static List<String> help = CONFIG.getStringList("help");
+    public static List<String> help;
 
-    public static String SENT_MESSAGE = CONFIG.getString("messaging.sent");
-    public static String FROM_MESSAGE = CONFIG.getString("messaging.from");
+    public static String SENT_MESSAGE;
+    public static String FROM_MESSAGE;
 
-    public static Boolean SQLENABLED = CONFIG.getBoolean("sql.sql-enabled");
-    public static String SQLURL = CONFIG.getString("sql.sql-url");
-    public static String SQLUSER = CONFIG.getString("sql.sql-user");
-    public static String SQLPASSWORD = CONFIG.getString("sql.sql-password");
+    public static Boolean SQLENABLED;
+    public static String SQLURL;
+    public static String SQLUSER;
+    public static String SQLPASSWORD;
 
-    public static String PERMISSION_PREFIX = CONFIG.getString("permission-prefix");
+    public static String PERMISSION_PREFIX;
     public static void setSpawn(Location loc) {
         CONFIG.set("spawn.world", loc.getWorld().getName());
         CONFIG.set("spawn.x", loc.getBlockX());
@@ -51,5 +51,15 @@ public final class ConfigUtils {
                 (float) CONFIG.getDouble("spawn.yaw"),
                 (float) CONFIG.getDouble("spawn.pitch")
         );
+
+        noPermission = CONFIG.getString("no-permission");
+        help = CONFIG.getStringList("help");
+        SENT_MESSAGE = CONFIG.getString("messaging.sent");
+        FROM_MESSAGE = CONFIG.getString("messaging.from");
+        SQLENABLED = CONFIG.getBoolean("sql.sql-enabled");
+        SQLURL = CONFIG.getString("sql.sql-url");
+        SQLUSER = CONFIG.getString("sql.sql-user");
+        SQLPASSWORD = CONFIG.getString("sql.sql-password");
+        PERMISSION_PREFIX = CONFIG.getString("permission-prefix");
     }
 }

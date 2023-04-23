@@ -25,11 +25,12 @@ public final class NRCore extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        config = this.getConfig();
-        registerCommands();
+        config = getConfig();
 
         config.options().copyDefaults(true);
         saveDefaultConfig();
+
+        registerCommands();
 
         getServer().getPluginManager().registerEvents(new WorldGuard(), this);
         getServer().getPluginManager().registerEvents(new MoveEvent(), this);

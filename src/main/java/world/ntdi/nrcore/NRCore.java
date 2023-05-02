@@ -30,6 +30,8 @@ public final class NRCore extends JavaPlugin {
         config.options().copyDefaults(true);
         saveDefaultConfig();
 
+        ConfigUtils.init();
+
         registerCommands();
 
         getServer().getPluginManager().registerEvents(new WorldGuard(), this);

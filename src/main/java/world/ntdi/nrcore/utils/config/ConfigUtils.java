@@ -10,7 +10,7 @@ import java.util.List;
 
 public final class ConfigUtils {
 
-    private static final FileConfiguration CONFIG = NRCore.config;
+    private static FileConfiguration CONFIG;
 
     public static Location spawn;
 
@@ -42,8 +42,9 @@ public final class ConfigUtils {
         }
     }
 
+    public static void init() {
+        CONFIG = NRCore.config;
 
-    static {
         spawn = new Location(Bukkit.getWorld(CONFIG.getString("spawn.world")),
                 CONFIG.getDouble("spawn.x"),
                 CONFIG.getDouble("spawn.y"),

@@ -42,7 +42,7 @@ public class ConfigUtils {
         }
     }
 
-    public void ConfigUtils() {
+    public ConfigUtils() {
         CONFIG = NRCore.getInstance().getConfig();
 
         spawn = new Location(Bukkit.getWorld(CONFIG.getString("spawn.world")),
@@ -62,5 +62,7 @@ public class ConfigUtils {
         SQLUSER = CONFIG.getString("sql.sql-user");
         SQLPASSWORD = CONFIG.getString("sql.sql-password");
         PERMISSION_PREFIX = CONFIG.getString("permission-prefix");
+
+        System.out.println(SQLENABLED);
     }
 }

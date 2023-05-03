@@ -2,7 +2,6 @@ package world.ntdi.nrcore;
 
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 import world.ntdi.nrcore.commands.*;
 import world.ntdi.nrcore.events.InvEvent;
@@ -20,17 +19,16 @@ import java.util.concurrent.CompletableFuture;
 public final class NRCore extends JavaPlugin {
 
     private static DatabaseThread databaseThread;
-    public static FileConfiguration config;
+    public static ConfigUtils config;
     public static List<UUID> invsee = new ArrayList<>();
 
     @Override
     public void onEnable() {
-        config = getConfig();
 
-        config.options().copyDefaults(true);
+        getConfig().options().copyDefaults(true);
         saveDefaultConfig();
 
-        ConfigUtils.init();
+        config = new ConfigUtils();
 
         registerCommands();
 
@@ -43,13 +41,13 @@ public final class NRCore extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        if (ConfigUtils.SQLENABLED) {
+        if (config.SQLENABLED) {
             databaseThread.getDB().closeDefault();
         }
     }
 
     public static void resetDatabaseConnection() {
-        if (ConfigUtils.SQLENABLED) {
+        if (config.SQLENABLED) {
             databaseThread = new DatabaseThread(new Database());
             CompletableFuture.runAsync(databaseThread::start);
         }

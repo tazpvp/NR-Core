@@ -24,7 +24,7 @@ public class WorldGuardCommandFunction extends CommandCore implements CommandFun
 
     @Override
     public void execute(CommandSender sender, String[] args) {
-        FileConfiguration CONFIG = NRCore.getInstance().config;
+        FileConfiguration CONFIG = NRCore.getInstance().getConfig();
 
         if (args[0].equalsIgnoreCase("blockstatechange")) {
             if (Boolean.valueOf(CONFIG.getString("world-guard.block-state-change"))) {

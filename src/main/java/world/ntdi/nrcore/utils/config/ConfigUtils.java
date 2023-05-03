@@ -8,26 +8,26 @@ import world.ntdi.nrcore.NRCore;
 
 import java.util.List;
 
-public final class ConfigUtils {
+public class ConfigUtils {
 
-    private static FileConfiguration CONFIG;
+    private FileConfiguration CONFIG;
 
-    public static Location spawn;
+    public Location spawn;
 
-    public static String noPermission;
+    public String noPermission;
 
-    public static List<String> help;
+    public List<String> help;
 
-    public static String SENT_MESSAGE;
-    public static String FROM_MESSAGE;
+    public String SENT_MESSAGE;
+    public String FROM_MESSAGE;
 
-    public static Boolean SQLENABLED;
-    public static String SQLURL;
-    public static String SQLUSER;
-    public static String SQLPASSWORD;
+    public Boolean SQLENABLED;
+    public String SQLURL;
+    public String SQLUSER;
+    public String SQLPASSWORD;
 
     public static String PERMISSION_PREFIX;
-    public static void setSpawn(Location loc) {
+    public void setSpawn(Location loc) {
         CONFIG.set("spawn.world", loc.getWorld().getName());
         CONFIG.set("spawn.x", loc.getBlockX());
         CONFIG.set("spawn.y", loc.getBlockY());
@@ -36,14 +36,14 @@ public final class ConfigUtils {
         CONFIG.set("spawn.pitch", loc.getPitch());
     }
 
-    public static void cancelWG(Cancellable e, final String path) {
+    public void cancelWG(Cancellable e, final String path) {
         if (CONFIG.getBoolean("world-guard." + path)) {
             e.setCancelled(true);
         }
     }
 
-    public static void init() {
-        CONFIG = NRCore.config;
+    public void ConfigUtils() {
+        CONFIG = NRCore.getInstance().getConfig();
 
         spawn = new Location(Bukkit.getWorld(CONFIG.getString("spawn.world")),
                 CONFIG.getDouble("spawn.x"),

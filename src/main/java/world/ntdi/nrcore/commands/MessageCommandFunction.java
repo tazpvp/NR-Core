@@ -3,8 +3,8 @@ package world.ntdi.nrcore.commands;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import world.ntdi.nrcore.NRCore;
 import world.ntdi.nrcore.utils.ChatUtils;
-import world.ntdi.nrcore.utils.config.ConfigUtils;
 import world.ntdi.nrcore.utils.command.CommandCore;
 import world.ntdi.nrcore.utils.command.CommandFunction;
 
@@ -49,11 +49,11 @@ public class MessageCommandFunction extends CommandCore implements CommandFuncti
         String message = ChatUtils.builder(args, start);
 
         String formatTo = ChatUtils.chat(
-                ConfigUtils.SENT_MESSAGE
+                NRCore.config.SENT_MESSAGE
                         .replace("%player%", receiver.getName())
                         .replace("%msg%", message));
         String formatFrom = ChatUtils.chat(
-                ConfigUtils.FROM_MESSAGE
+                NRCore.config.FROM_MESSAGE
                         .replace("%player%", sender.getName())
                         .replace("%msg%", message));
 

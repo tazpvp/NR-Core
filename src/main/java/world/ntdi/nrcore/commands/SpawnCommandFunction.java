@@ -1,10 +1,5 @@
 package world.ntdi.nrcore.commands;
 
-import world.ntdi.nrcore.NRCore;
-import world.ntdi.nrcore.events.MoveEvent;
-import world.ntdi.nrcore.utils.config.ConfigUtils;
-import world.ntdi.nrcore.utils.command.CommandCore;
-import world.ntdi.nrcore.utils.command.CommandFunction;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -14,11 +9,13 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.scheduler.BukkitRunnable;
+import world.ntdi.nrcore.NRCore;
+import world.ntdi.nrcore.events.MoveEvent;
 import world.ntdi.nrcore.utils.PlayerUtils;
+import world.ntdi.nrcore.utils.command.CommandCore;
+import world.ntdi.nrcore.utils.command.CommandFunction;
 
 import java.util.List;
-
-import static world.ntdi.nrcore.utils.PlayerUtils.checkPerms;
 
 public class SpawnCommandFunction extends CommandCore implements CommandFunction {
     private final String spawnType;
@@ -33,12 +30,12 @@ public class SpawnCommandFunction extends CommandCore implements CommandFunction
     public void execute(CommandSender sender, String[] args) {
 
         final NRCore ROWCORE = NRCore.getInstance();
-        final FileConfiguration CONFIG = NRCore.getInstance().config;
+        final FileConfiguration CONFIG = NRCore.getInstance().getConfig();
 
         if (args.length >= 1) {
             if (!PlayerUtils.checkPerms(sender, "spawn", ".others")) return;
             Player target = Bukkit.getPlayer(args[0]);
-            target.teleport(ConfigUtils.spawn);
+            target.teleport(NRCore.config.spawn);
             target.playSound(target.getLocation(), Sound.valueOf(CONFIG.getString("teleport.sound")), 1, 1);
 
         }
@@ -48,11 +45,11 @@ public class SpawnCommandFunction extends CommandCore implements CommandFunction
                 if (!PlayerUtils.checkPerms(p,"spawn.set")) return;
 
                 Location loc = p.getLocation();
-                ConfigUtils.setSpawn(loc);
+                NRCore.config.setSpawn(loc);
 
             } else {
                 if (PlayerUtils.checkPerms(p,"spawn.bypass")) {
-                    p.teleport(ConfigUtils.spawn);
+                    p.teleport(NRCore.config.spawn);
                     p.sendMessage(ChatColor.DARK_AQUA + "Teleportation complete.");
                 } else {
                     p.sendMessage(ChatColor.DARK_AQUA + "You'll be teleported to spawn in " + ChatColor.AQUA + CONFIG.getString("teleport.delay") + " Seconds" + ChatColor.DARK_AQUA + " Do not move.");
@@ -65,7 +62,7 @@ public class SpawnCommandFunction extends CommandCore implements CommandFunction
                             if (p.hasMetadata("goingToSpawn")){
                                 p.removeMetadata("goingToSpawn", ROWCORE);
 
-                                p.teleport(ConfigUtils.spawn);
+                                p.teleport(NRCore.config.spawn);
                                 p.sendMessage(ChatColor.DARK_AQUA + "Teleportation complete.");
 
                                 p.playSound(p.getLocation(), Sound.valueOf(CONFIG.getString("teleport.sound")), 1, 1);

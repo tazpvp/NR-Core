@@ -1,8 +1,8 @@
 package world.ntdi.nrcore.utils.sql;
 
 import lombok.Getter;
-import world.ntdi.nrcore.utils.config.ConfigUtils;
 import org.bukkit.Bukkit;
+import world.ntdi.nrcore.NRCore;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -15,13 +15,13 @@ public class Database {
     private Statement stmt = null;
 
     public Database() {
-        if (ConfigUtils.SQLENABLED) {
+        if (NRCore.config.SQLENABLED) {
             Bukkit.getLogger().info("Attempting to connect to Postgresql Database");
             try {
                 Class.forName("org.postgresql.Driver");
                 c = DriverManager.getConnection(
-                        "jdbc:postgresql://" + ConfigUtils.SQLURL + "/postgres",
-                        ConfigUtils.SQLUSER, ConfigUtils.SQLPASSWORD
+                        "jdbc:postgresql://" + NRCore.config.SQLURL + "/postgres",
+                        NRCore.config.SQLUSER, NRCore.config.SQLPASSWORD
                 );
                 stmt = c.createStatement();
                 Bukkit.getLogger().info("Connected to Postgresql DB!");
@@ -35,7 +35,7 @@ public class Database {
     }
 
     public void closeDefault() {
-        if (ConfigUtils.SQLENABLED) {
+        if (NRCore.config.SQLENABLED) {
             try {
                 c.close();
                 stmt.close();

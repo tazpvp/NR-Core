@@ -9,6 +9,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.SimpleCommandMap;
 import org.bukkit.command.defaults.BukkitCommand;
 import org.bukkit.plugin.SimplePluginManager;
+import world.ntdi.nrcore.NRCore;
 import world.ntdi.nrcore.utils.config.ConfigUtils;
 
 import java.lang.reflect.Field;
@@ -132,7 +133,7 @@ public abstract class CommandCore extends BukkitCommand {
     }
 
     public String invalidPermissionMessage() {
-        return ConfigUtils.noPermission + getPermission();
+        return NRCore.config.noPermission + getPermission();
     }
 
 }

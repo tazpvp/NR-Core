@@ -6,6 +6,7 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.EnchantmentStorageMeta;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class EnchantmentBookBuilder {
@@ -14,6 +15,7 @@ public class EnchantmentBookBuilder {
 
     public EnchantmentBookBuilder() {
         this.material = Material.ENCHANTED_BOOK;
+        this.enchantmentIntegerMap = new HashMap<>();
     }
 
     public EnchantmentBookBuilder enchantment(@NonNull final Enchantment enchantment, final int level) {

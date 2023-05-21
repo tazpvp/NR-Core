@@ -59,7 +59,6 @@ public final class NRCore extends JavaPlugin {
     }
 
     public void registerCommands() { //makes sure the plugin knows about the command classes
-        new HelpCommandFunction();
         new SpawnCommandFunction("set");
         new SpawnCommandFunction("");
         new HealCommandFunction();

@@ -57,6 +57,7 @@ public final class PlayerUtils {
     }
 
     public static void flyPlr(final Player p) {
+        p.setAllowFlight(true);
         p.setFlying(true);
     }
 }

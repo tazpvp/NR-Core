@@ -31,6 +31,9 @@ public class FlyCommandFunction extends CommandCore implements CommandFunction {
 
     @Override
     public List<String> tabCompletion(CommandSender sender, String[] args) {
+        if (args.length == 0) {
+            return List.of("test", "test2");
+        }
         return List.of("");
     }
 }

@@ -4,6 +4,7 @@ import lombok.NonNull;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import world.ntdi.nrcore.utils.command.simple.Completer;
 import world.ntdi.nrcore.utils.command.simple.Label;
 import world.ntdi.nrcore.utils.command.simple.NRCommand;
 
@@ -47,7 +48,7 @@ public class InvseeCommand extends NRCommand {
     @Override
     public List<String> complete(CommandSender sender, String[] args) {
         if (args.length == 1) {
-            return Bukkit.getOnlinePlayers().stream().map(Player::getName).toList();
+            return Completer.onlinePlayers(args[0]);
         }
         return List.of();
     }

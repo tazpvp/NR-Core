@@ -52,4 +52,14 @@ public interface Completer {
         return list;
     }
 
+    static List<String> onlinePlayers(String startsWith) {
+        List<String> list = new ArrayList<>();
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            if (player.getName().startsWith(startsWith)) {
+                list.add(player.getName());
+            }
+        }
+        return list;
+    }
+
 }

@@ -14,6 +14,7 @@ import java.util.Map;
 // not in a multi-threaded environment for commands nor woudl that be wanted
 @SuppressWarnings("java:S3366")
 public class NRCommand implements Completer, Executor {
+    @Getter
     private final Label label;
     @Setter
     private Executor nativeExecutor;

@@ -1,10 +1,13 @@
 package world.ntdi.nrcore;
 
 import org.bukkit.Bukkit;
-import org.bukkit.GameMode;
 import org.bukkit.plugin.java.JavaPlugin;
 import world.ntdi.nrcore.commands.*;
+import world.ntdi.nrcore.commands.enderchest.EnderchestCommand;
 import world.ntdi.nrcore.commands.fly.FlyCommand;
+import world.ntdi.nrcore.commands.gamemode.GameModeCommand;
+import world.ntdi.nrcore.commands.heal.HealCommand;
+import world.ntdi.nrcore.commands.invsee.InvseeCommand;
 import world.ntdi.nrcore.events.InvEvent;
 import world.ntdi.nrcore.events.MoveEvent;
 import world.ntdi.nrcore.events.WorldGuard;
@@ -14,6 +17,7 @@ import world.ntdi.nrcore.utils.sql.Database;
 import world.ntdi.nrcore.utils.sql.DatabaseThread;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
@@ -63,16 +67,14 @@ public final class NRCore extends JavaPlugin {
     public void registerCommands() { //makes sure the plugin knows about the command classes
         new SpawnCommandFunction("set");
         new SpawnCommandFunction("");
-        new HealCommandFunction();
+        CommandCL.register(new HealCommand());
         CommandCL.register(new FlyCommand());
-        new ViewEnderchestCommandFunction();
+        CommandCL.register(new EnderchestCommand());
+        CommandCL.register(new InvseeCommand());
         new MessageCommandFunction();
         new SpeedCommandFunction();
         new SkullCommandFunction();
-        new GamemodeCommandFunction(GameMode.CREATIVE, "gmc");
-        new GamemodeCommandFunction(GameMode.SURVIVAL, "gms");
-        new GamemodeCommandFunction(GameMode.ADVENTURE, "gma");
-        new GamemodeCommandFunction(GameMode.SPECTATOR, "gmsp");
+        Arrays.stream(GameModeCommand.values()).forEach(command -> CommandCL.register(command.command()));
         new WorldGuardCommandFunction("worldguard", "worldguard", "wg");
     }
 

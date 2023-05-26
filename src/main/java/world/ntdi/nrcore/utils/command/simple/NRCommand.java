@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 import org.bukkit.command.CommandSender;
+import world.ntdi.nrcore.utils.config.ConfigUtils;
 
 import java.util.HashMap;
 import java.util.List;
@@ -115,5 +116,9 @@ public class NRCommand implements Completer, Executor {
             }
         }
         return null;
+    }
+
+    public void sendNoPermission(CommandSender sender, String permission) {
+        sender.sendMessage(ConfigUtils.PERMISSION_PREFIX + permission);
     }
 }

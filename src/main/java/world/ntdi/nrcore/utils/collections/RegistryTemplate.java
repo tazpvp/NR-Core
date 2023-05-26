@@ -1,4 +1,4 @@
-package world.ntdi.nrcore.utils.command.collections;
+package world.ntdi.nrcore.utils.collections;
 
 import lombok.NonNull;
 

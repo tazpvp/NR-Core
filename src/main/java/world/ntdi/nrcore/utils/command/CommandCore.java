@@ -3,10 +3,7 @@ package world.ntdi.nrcore.utils.command;
 import lombok.NonNull;
 import lombok.Setter;
 import org.bukkit.Bukkit;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandMap;
-import org.bukkit.command.CommandSender;
-import org.bukkit.command.SimpleCommandMap;
+import org.bukkit.command.*;
 import org.bukkit.command.defaults.BukkitCommand;
 import org.bukkit.plugin.SimplePluginManager;
 import world.ntdi.nrcore.NRCore;
@@ -19,7 +16,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-public abstract class CommandCore extends BukkitCommand {
+@Deprecated
+public abstract class CommandCore extends BukkitCommand implements TabCompleter {
     private static final Field COMMAND_MAP_FIELD;
     private static final Field KNOWN_COMMANDS_FIELD;
 
@@ -87,6 +85,11 @@ public abstract class CommandCore extends BukkitCommand {
     }
 
     public abstract List<String> tabCompletion(CommandSender sender, String[] args);
+
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
+        return tabCompletion(sender, args);
+    }
 
     /**
      * Called when the command is sent in minecraft

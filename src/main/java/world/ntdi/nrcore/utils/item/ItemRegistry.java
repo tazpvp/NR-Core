@@ -1,6 +1,6 @@
 package world.ntdi.nrcore.utils.item;
 
-import world.ntdi.nrcore.utils.command.collections.RegistryTemplate;
+import world.ntdi.nrcore.utils.collections.RegistryTemplate;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 

@@ -19,12 +19,12 @@ public class HealCommand extends NRCommand {
     @Override
     public boolean execute(@NonNull CommandSender sender, @NonNull String[] args) {
         if (!(sender instanceof Player player)) {
-            sendNoPermission(sender, PERMISSION);
+            sendNoPermission(sender);
             return true;
         }
 
         if (!sender.hasPermission(PERMISSION)) {
-            sendNoPermission(sender, PERMISSION);
+            sendNoPermission(sender);
             return true;
         }
 

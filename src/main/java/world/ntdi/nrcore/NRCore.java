@@ -2,12 +2,16 @@ package world.ntdi.nrcore;
 
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
-import world.ntdi.nrcore.commands.*;
 import world.ntdi.nrcore.commands.enderchest.EnderchestCommand;
 import world.ntdi.nrcore.commands.fly.FlyCommand;
 import world.ntdi.nrcore.commands.gamemode.GameModeCommand;
 import world.ntdi.nrcore.commands.heal.HealCommand;
 import world.ntdi.nrcore.commands.invsee.InvseeCommand;
+import world.ntdi.nrcore.commands.message.MessageCommand;
+import world.ntdi.nrcore.commands.message.ReplyCommand;
+import world.ntdi.nrcore.commands.skull.SkullCommand;
+import world.ntdi.nrcore.commands.speed.SpeedCommand;
+import world.ntdi.nrcore.commands.wg.WorldGuardCommand;
 import world.ntdi.nrcore.events.InvEvent;
 import world.ntdi.nrcore.events.MoveEvent;
 import world.ntdi.nrcore.events.WorldGuard;
@@ -65,17 +69,16 @@ public final class NRCore extends JavaPlugin {
     }
 
     public void registerCommands() { //makes sure the plugin knows about the command classes
-        new SpawnCommandFunction("set");
-        new SpawnCommandFunction("");
         CommandCL.register(new HealCommand());
         CommandCL.register(new FlyCommand());
         CommandCL.register(new EnderchestCommand());
         CommandCL.register(new InvseeCommand());
-        new MessageCommandFunction();
-        new SpeedCommandFunction();
-        new SkullCommandFunction();
+        CommandCL.register(new SpeedCommand());
+        CommandCL.register(new MessageCommand());
+        CommandCL.register(new ReplyCommand());
+        CommandCL.register(new SkullCommand());
         Arrays.stream(GameModeCommand.values()).forEach(command -> CommandCL.register(command.command()));
-        new WorldGuardCommandFunction("worldguard", "worldguard", "wg");
+        CommandCL.register(new WorldGuardCommand());
     }
 
     public static NRCore getInstance(){

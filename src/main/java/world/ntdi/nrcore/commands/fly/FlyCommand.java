@@ -12,12 +12,12 @@ public class FlyCommand extends NRCommand {
         super(new Label("fly", "nrcore.fly"));
         setNativeExecutor((sender, args) -> {
             if (!sender.hasPermission(getLabel().getPermission())) {
-                sendNoPermission(sender, getLabel().getPermission());
+                sendNoPermission(sender);
                 return true;
             }
 
             if (!(sender instanceof Player p)) {
-                sendNoPermission(sender, getLabel().getPermission());
+                sendNoPermission(sender);
                 return true;
             }
 

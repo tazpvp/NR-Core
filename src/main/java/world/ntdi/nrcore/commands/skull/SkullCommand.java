@@ -1,4 +1,4 @@
-package world.ntdi.nrcore.commands.invsee;
+package world.ntdi.nrcore.commands.skull;
 
 import lombok.NonNull;
 import org.bukkit.Bukkit;
@@ -7,12 +7,14 @@ import org.bukkit.entity.Player;
 import world.ntdi.nrcore.utils.command.simple.Completer;
 import world.ntdi.nrcore.utils.command.simple.Label;
 import world.ntdi.nrcore.utils.command.simple.NRCommand;
+import world.ntdi.nrcore.utils.item.builders.SkullBuilder;
 
 import java.util.List;
 
-public class InvseeCommand extends NRCommand {
-    public InvseeCommand() {
-        super(new Label("invsee", "nrcore.invsee"));
+public class SkullCommand extends NRCommand {
+    public SkullCommand() {
+         super(new Label("skull", "nrcore.skull"));
+         addSubcommand(new SkullUUIDCommand());
     }
 
     @Override
@@ -27,20 +29,15 @@ public class InvseeCommand extends NRCommand {
             return true;
         }
 
-        if (args.length <= 0) {
-            sender.sendMessage("No inv to see!");
-            return true;
-        }
-
-        final String targetName = args[0];
-        final Player target = Bukkit.getPlayer(targetName);
-
-        if (target == null) {
-            sender.sendMessage("No target found!!");
-            return true;
-        }
-
-        player.openInventory(target.getInventory());
+         if (args.length > 1) {
+             if (!args[0].equals("uuid")) {
+                 final String targetName = args[0];
+                 final Player target = Bukkit.getPlayer(targetName);
+                 if (target != null) {
+                     player.getInventory().addItem(SkullBuilder.of().setHeadTexture(target.getUniqueId()).build());
+                 }
+             }
+         }
 
         return true;
     }

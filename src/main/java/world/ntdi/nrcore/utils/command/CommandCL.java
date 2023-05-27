@@ -14,6 +14,10 @@ public final class CommandCL {
         BukkitBridge.register(new BukkitBridge(command));
     }
 
+    public static void register(@NonNull final NRCommand command, @NonNull final String identifier) {
+        BukkitBridge.register(new BukkitBridge(command), identifier);
+    }
+
     public static void unregister(@NonNull final String commandName) {
         BukkitBridge.unregister(commandName);
     }

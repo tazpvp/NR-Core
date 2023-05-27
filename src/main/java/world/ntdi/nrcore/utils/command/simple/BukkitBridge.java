@@ -60,6 +60,11 @@ public final class BukkitBridge extends BukkitCommand {
 
     @SuppressWarnings("unchecked")
     public static void register(@NonNull final BukkitCommand command) {
+        register(command, "nrcore");
+    }
+
+    @SuppressWarnings("unchecked")
+    public static void register(@NonNull final BukkitCommand command, @NonNull final String identifier) {
         try {
             final CommandMap cmap = (CommandMap) COMMAND_MAP_FIELD.get(org.bukkit.Bukkit.getPluginManager());
             final Map<String, Command> knownCommands = (Map<String, Command>) KNOWN_COMMANDS_FIELD.get(cmap);
@@ -73,7 +78,7 @@ public final class BukkitBridge extends BukkitCommand {
                 }
             });
 
-            cmap.register(command.getLabel(), command);
+            cmap.register(identifier, command);
 
         } catch (IllegalArgumentException | IllegalAccessException e) {
             e.printStackTrace();

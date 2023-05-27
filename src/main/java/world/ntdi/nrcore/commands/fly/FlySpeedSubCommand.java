@@ -3,8 +3,11 @@ package world.ntdi.nrcore.commands.fly;
 import lombok.NonNull;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import world.ntdi.nrcore.utils.command.simple.Completer;
 import world.ntdi.nrcore.utils.command.simple.Label;
 import world.ntdi.nrcore.utils.command.simple.NRCommand;
+
+import java.util.List;
 
 public class FlySpeedSubCommand extends NRCommand {
     public static final String NAME = "speed";
@@ -54,5 +57,13 @@ public class FlySpeedSubCommand extends NRCommand {
             sender.sendMessage("/fly");
             return MAGIC_INVALID_NUMBER;
         }
+    }
+
+    @Override
+    public List<String> complete(CommandSender sender, String[] args) {
+        if (args.length == 1) {
+            return Completer.doubleRange(0.1, 0.9, 0.1);
+        }
+        return List.of();
     }
 }

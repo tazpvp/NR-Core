@@ -119,7 +119,17 @@ public class NRCommand implements Completer, Executor {
         return null;
     }
 
-    public void sendNoPermission(CommandSender sender) {
+    protected void sendNoPermission(CommandSender sender) {
         sender.sendMessage(ConfigUtils.PERMISSION_PREFIX + getLabel().getPermission());
     }
+
+    protected void sendIncorrectUsage(CommandSender sender, String correctUsage) {
+        sender.sendMessage(ConfigUtils.incorrectUsage + correctUsage);
+    }
+
+    protected void sendIncorrectUsage(CommandSender sender) {
+        sendIncorrectUsage(sender, "");
+    }
+
+
 }

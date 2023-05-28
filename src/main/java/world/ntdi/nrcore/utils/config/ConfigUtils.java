@@ -15,6 +15,7 @@ public class ConfigUtils {
     public Location spawn;
 
     public String noPermission;
+    public static String incorrectUsage;
 
     public List<String> help;
 
@@ -54,6 +55,7 @@ public class ConfigUtils {
         );
 
         noPermission = CONFIG.getString("no-permission");
+        incorrectUsage = CONFIG.getString("wrong-usage");
         help = CONFIG.getStringList("help");
         SENT_MESSAGE = CONFIG.getString("messaging.sent");
         FROM_MESSAGE = CONFIG.getString("messaging.from");

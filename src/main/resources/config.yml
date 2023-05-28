@@ -4,6 +4,7 @@ theme:
 
 permission-prefix: "nrcore."
 no-permission: " &cYou are missing the permission: "
+wrong-usage: "&cIncorrect Usage: "
 
 spawn:
   world: world

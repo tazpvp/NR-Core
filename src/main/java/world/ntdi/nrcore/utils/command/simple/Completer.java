@@ -39,7 +39,7 @@ public interface Completer {
     static List<String> doubleRange(double min, double max, double step) {
         List<String> list = new ArrayList<>();
         for (double i = min; i <= max; i += step) {
-            list.add(String.valueOf(i));
+            list.add(String.valueOf(Math.round(i * 10)/10));
         }
         return list;
     }

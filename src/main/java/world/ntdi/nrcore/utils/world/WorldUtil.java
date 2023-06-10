@@ -2,6 +2,7 @@ package world.ntdi.nrcore.utils.world;
 
 import org.bukkit.Bukkit;
 import org.bukkit.World;
+import org.bukkit.WorldCreator;
 import org.bukkit.scheduler.BukkitRunnable;
 import world.ntdi.nrcore.NRCore;
 
@@ -10,34 +11,29 @@ import java.io.IOException;
 import java.nio.file.Files;
 
 public class WorldUtil {
-    public static void cloneWorld(String sourceName, String destinationName) {
-        World sourceWorld = Bukkit.getWorld(sourceName);
+    public static void cloneWorld(String sourceName, final String destinationName) {
+        final World sourceWorld = Bukkit.getWorld(sourceName);
         if (sourceWorld == null) {
             throw new IllegalArgumentException("Source world not found.");
-        }
-
-        if (Bukkit.getWorld(destinationName) != null) {
+        } else if (Bukkit.getWorld(destinationName) != null) {
             throw new IllegalArgumentException("Destination world already exists. Please choose a different name.");
-        }
-
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-                File sourceFolder = sourceWorld.getWorldFolder();
-                File destinationFolder = new File(Bukkit.getWorldContainer(), destinationName);
-
-                if (sourceFolder.exists() && sourceFolder.isDirectory()) {
+        } else {
+            (new BukkitRunnable() {
+                public void run() {
                     try {
-                        Bukkit.getServer().getWorldContainer().mkdirs();
-                        copyFolder(sourceFolder, destinationFolder);
+                        WorldCreator worldCreator = new WorldCreator(destinationName);
+                        World clonedWorld = worldCreator.createWorld();
+
+                        File sourceFolder = sourceWorld.getWorldFolder();
+                        File destinationFolder = clonedWorld.getWorldFolder();
+
+                        WorldUtil.copyFolder(sourceFolder, destinationFolder);
                     } catch (Exception e) {
                         throw new RuntimeException("Failed to clone the world: " + e.getMessage());
                     }
-                } else {
-                    throw new RuntimeException("Failed to clone the world. Source world folder not found.");
                 }
-            }
-        }.runTaskAsynchronously(NRCore.getInstance());
+            }).runTaskAsynchronously(NRCore.getInstance());
+        }
     }
 
     public static void deleteWorld(String worldName) {

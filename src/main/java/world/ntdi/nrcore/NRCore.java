@@ -17,6 +17,7 @@ import world.ntdi.nrcore.events.MoveEvent;
 import world.ntdi.nrcore.events.WorldGuard;
 import world.ntdi.nrcore.utils.command.CommandCL;
 import world.ntdi.nrcore.utils.config.ConfigUtils;
+import world.ntdi.nrcore.utils.holograms.Hologram;
 import world.ntdi.nrcore.utils.sql.Database;
 import world.ntdi.nrcore.utils.sql.DatabaseThread;
 
@@ -31,6 +32,7 @@ public final class NRCore extends JavaPlugin {
     private static DatabaseThread databaseThread;
     public static ConfigUtils config;
     public static List<UUID> invsee = new ArrayList<>();
+    public static List<Hologram> toBeDeleted = new ArrayList<>();
 
     @Override
     public void onEnable() {
@@ -53,6 +55,9 @@ public final class NRCore extends JavaPlugin {
     public void onDisable() {
         if (config.SQLENABLED) {
             databaseThread.getDB().closeDefault();
+        }
+        if (!toBeDeleted.isEmpty()) {
+            toBeDeleted.forEach(Hologram::deleteHologram);
         }
     }
 

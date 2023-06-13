@@ -105,4 +105,11 @@ public class Hologram {
             }
         });
     }
+
+    /**
+     * Adds this hologram to a deletion coroutine when the server closes.
+     */
+    public void deleteOnServerClose() {
+        NRCore.toBeDeleted.add(this);
+    }
 }

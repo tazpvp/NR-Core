@@ -1,11 +1,17 @@
 package world.ntdi.nrcore.commands.heal;
 
 import lombok.NonNull;
+import org.bukkit.Bukkit;
+import org.bukkit.Effect;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.potion.PotionEffect;
+import world.ntdi.nrcore.utils.command.simple.Completer;
 import world.ntdi.nrcore.utils.command.simple.Label;
 import world.ntdi.nrcore.utils.command.simple.NRCommand;
+
+import java.util.List;
 
 public class HealCommand extends NRCommand {
     public static final String NAME = "heal";
@@ -28,11 +34,24 @@ public class HealCommand extends NRCommand {
             return true;
         }
 
-        player.setHealth(player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
-        player.setFoodLevel(20);
-        player.setSaturation(20);
+        Player target = player;
+        if (args.length >= 1) {
+            target = Bukkit.getPlayer(args[0]);
+        }
 
-        player.sendMessage("Healed");
+        for (PotionEffect effect : target.getActivePotionEffects()) {
+            target.removePotionEffect(effect.getType());
+        }
+        target.setHealth(target.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue());
+        target.setFoodLevel(20);
+        target.setSaturation(20);
+
+        player.sendMessage("You healed " + target.getName());
         return true;
+    }
+
+    @Override
+    public List<String> complete(CommandSender sender, String[] args) {
+        return Completer.onlinePlayers(args[0]);
     }
 }

@@ -221,12 +221,10 @@ public final class SQLHelper {
     /**
      * Get all the values and their associated primary keyin a column.
      *
-     * @param table The table in which the column lies in
-     * @param column A Map.entry() of the column's name and data type associated with it
      * @return A list of all the values in the column.
      * @throws SQLException Will throw errors if trying to access closed statement/connection.
      */
-    public LinkedHashMap<String, Object> getListOfIdColumn(@Nonnull final String NAME, @Nonnull final String TYPE, @NonNull final String ID) {
+    public static LinkedHashMap<String, Object> getListOfIdColumn(@Nonnull final String NAME, @Nonnull final String TYPE, @NonNull final String ID) {
         LinkedHashMap<String, Object> values = new LinkedHashMap<>();
 
         try {

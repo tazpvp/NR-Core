@@ -1,14 +1,18 @@
 package world.ntdi.nrcore.utils.sql;
 
+import lombok.NonNull;
 import world.ntdi.nrcore.NRCore;
 import world.ntdi.nrcore.utils.ChatUtils;
 
 import javax.annotation.Nonnull;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 public final class SQLHelper {
     private static final Statement STMT;
@@ -212,6 +216,28 @@ public final class SQLHelper {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        return values;
+    }
+    /**
+     * Get all the values and their associated primary keyin a column.
+     *
+     * @param table The table in which the column lies in
+     * @param column A Map.entry() of the column's name and data type associated with it
+     * @return A list of all the values in the column.
+     * @throws SQLException Will throw errors if trying to access closed statement/connection.
+     */
+    public LinkedHashMap<String, Object> getListOfIdColumn(@Nonnull final String NAME, @Nonnull final String TYPE, @NonNull final String ID) {
+        LinkedHashMap<String, Object> values = new LinkedHashMap<>();
+
+        try {
+            ResultSet rs = STMT.executeQuery("SELECT DISTINCT " + ID + ", " + TYPE + " FROM " + NAME);
+            while (rs.next()) {
+                values.put(rs.getString(ID), rs.getObject(TYPE));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
         return values;
     }
 

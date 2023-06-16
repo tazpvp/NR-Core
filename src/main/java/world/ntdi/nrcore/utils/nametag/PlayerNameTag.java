@@ -27,6 +27,8 @@ public class PlayerNameTag {
             updateScoreboard(ranking, prefix, suffix, color, p, otherPlayer);
             updateScoreboard(ranking, prefix, suffix, color, otherPlayer, p);
         }
+
+        updateScoreboard(ranking, prefix, suffix, color, p, p);
     }
 
 

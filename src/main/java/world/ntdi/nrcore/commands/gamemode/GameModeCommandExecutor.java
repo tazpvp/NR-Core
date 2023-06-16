@@ -11,11 +11,17 @@ import world.ntdi.nrcore.utils.command.simple.Executor;
 public class GameModeCommandExecutor implements Executor {
     private final GameMode gamemode;
     private final String gameModeName;
+    private final String permission;
 
     @Override
     public boolean execute(@NonNull CommandSender sender, @NonNull String[] args) {
         if (!(sender instanceof Player player)) {
             sender.sendMessage("You must be a player to use this command!");
+            return true;
+        }
+
+        if (!sender.hasPermission(permission)) {
+            sender.sendMessage("No permission");
             return true;
         }
 

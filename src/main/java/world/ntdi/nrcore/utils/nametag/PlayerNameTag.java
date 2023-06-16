@@ -26,6 +26,7 @@ public class PlayerNameTag {
         for (Player otherPlayer : Bukkit.getOnlinePlayers()) {
             updateScoreboard(ranking, prefix, suffix, color, p, otherPlayer);
             updateScoreboard(ranking, prefix, suffix, color, otherPlayer, p);
+            updateScoreboard(ranking, prefix, suffix, color, otherPlayer, otherPlayer);
         }
 
         updateScoreboard(ranking, prefix, suffix, color, p, p);

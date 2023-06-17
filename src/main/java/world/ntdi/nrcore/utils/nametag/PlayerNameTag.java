@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
 import org.bukkit.entity.Player;
+import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
 import world.ntdi.nrcore.utils.ChatUtils;
 
@@ -23,10 +24,14 @@ public class PlayerNameTag {
      * @param color Player's color (Nullable)
      */
     public void initializePlayerNameTag(Player p, int ranking, @Nullable String prefix, @Nullable String suffix, @Nullable ChatColor color) {
+        Scoreboard scoreboard = Bukkit.getScoreboardManager().getNewScoreboard();
+
+        // Assign the scoreboard to the player
+        p.setScoreboard(scoreboard);
+
         for (Player otherPlayer : Bukkit.getOnlinePlayers()) {
             updateScoreboard(ranking, prefix, suffix, color, p, otherPlayer);
             updateScoreboard(ranking, prefix, suffix, color, otherPlayer, p);
-            updateScoreboard(ranking, prefix, suffix, color, otherPlayer, otherPlayer);
         }
 
         updateScoreboard(ranking, prefix, suffix, color, p, p);

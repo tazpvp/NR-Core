@@ -15,11 +15,10 @@ import java.util.UUID;
 
 public class Hologram {
     public static NamespacedKey key = new NamespacedKey(NRCore.getInstance(), "Hologram");
-
     @Getter
     private UUID id;
     @Getter
-    private String[] text;
+    private final String[] text;
     @Getter
     private Location spawnLoc;
     @Getter
@@ -39,10 +38,12 @@ public class Hologram {
 
     public Hologram(String text, Location spawnLoc, boolean baby) {
         new Hologram(new String[]{text}, spawnLoc, baby);
+        this.text = new String[]{text};
     }
 
     public Hologram(Location spawnLoc, boolean baby, String... text) {
         new Hologram(text, spawnLoc, baby);
+        this.text = text;
     }
 
     private void initializeHolograms() {

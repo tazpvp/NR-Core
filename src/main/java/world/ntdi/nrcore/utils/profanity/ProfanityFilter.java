@@ -4,43 +4,23 @@ import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ProfanityFilter {
-    private static Map<String, String[]> words = new HashMap<>();
+    private static List<String> words = new ArrayList<>();
 
     private static int largestWordLength = 0;
 
     public static void loadConfigs() {
         try {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(new URL("https://docs.google.com/spreadsheets/d/1hIEi2YG3ydav1E06Bzf2mQbGZ12kh2fe4ISgLg_UBuM/export?format=csv").openConnection().getInputStream()));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(new URL("https://raw.githubusercontent.com/tazpvp/Tazpvp/main/full-list-of-bad-words_text-file_2022_05_05.txt").openConnection().getInputStream()));
             String line = "";
             int counter = 0;
             while((line = reader.readLine()) != null) {
                 counter++;
-                String[] content = null;
-                try {
-                    content = line.split(",");
-                    if(content.length == 0) {
-                        continue;
-                    }
-                    String word = content[0];
-                    String[] ignore_in_combination_with_words = new String[]{};
-                    if(content.length > 1) {
-                        ignore_in_combination_with_words = content[1].split("_");
-                    }
-
-                    if(word.length() > largestWordLength) {
-                        largestWordLength = word.length();
-                    }
-                    words.put(word.replaceAll(" ", ""), ignore_in_combination_with_words);
-
-                } catch(Exception e) {
-                    e.printStackTrace();
-                }
-
+                words.add(line);
             }
-//            System.out.println("Loaded " + counter + " words to filter out");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -57,8 +37,6 @@ public class ProfanityFilter {
         if(input == null) {
             return new ArrayList<>();
         }
-
-        // don't forget to remove leetspeak, probably want to move this to its own function and use regex if you want to use this
 
         input = input.replaceAll("1","i");
         input = input.replaceAll("!","i");
@@ -79,19 +57,8 @@ public class ProfanityFilter {
             // from each letter, keep going to find bad words until either the end of the sentence is reached, or the max word length is reached.
             for(int offset = 1; offset < (input.length()+1 - start) && offset < largestWordLength; offset++)  {
                 String wordToCheck = input.substring(start, start + offset);
-                if(words.containsKey(wordToCheck)) {
-                    // for example, if you want to say the word bass, that should be possible.
-                    String[] ignoreCheck = words.get(wordToCheck);
-                    boolean ignore = false;
-                    for(int s = 0; s < ignoreCheck.length; s++ ) {
-                        if(input.contains(ignoreCheck[s])) {
-                            ignore = true;
-                            break;
-                        }
-                    }
-                    if(!ignore) {
-                        badWords.add(wordToCheck);
-                    }
+                if(words.contains(wordToCheck)) {
+                    badWords.add(wordToCheck);
                 }
             }
         }

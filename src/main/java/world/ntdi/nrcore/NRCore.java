@@ -18,6 +18,7 @@ import world.ntdi.nrcore.events.WorldGuard;
 import world.ntdi.nrcore.utils.command.CommandCL;
 import world.ntdi.nrcore.utils.config.ConfigUtils;
 import world.ntdi.nrcore.utils.holograms.Hologram;
+import world.ntdi.nrcore.utils.profanity.ProfanityFilter;
 import world.ntdi.nrcore.utils.sql.Database;
 import world.ntdi.nrcore.utils.sql.DatabaseThread;
 
@@ -49,6 +50,8 @@ public final class NRCore extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new InvEvent(), this);
 
         resetDatabaseConnection();
+
+        ProfanityFilter.loadConfigs();
     }
 
     @Override

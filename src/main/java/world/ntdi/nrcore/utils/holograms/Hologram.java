@@ -73,7 +73,7 @@ public class Hologram {
      * @param name The new text for each line
      */
     public void updateHologram(String... name) {
-        if (text.length != name.length) {
+        if (getText().length != name.length) {
             throw new ArrayIndexOutOfBoundsException("Cannot add lines to already defined length hologram");
         }
         for (int i = 0; i < armorStands.size(); i++) {

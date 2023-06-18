@@ -37,13 +37,12 @@ public class Hologram {
     }
 
     public Hologram(String text, Location spawnLoc, boolean baby) {
-        new Hologram(new String[]{text}, spawnLoc, baby);
-        this.text = new String[]{text};
+        this(new String[]{text}, spawnLoc, baby);
+
     }
 
     public Hologram(Location spawnLoc, boolean baby, String... text) {
-        new Hologram(text, spawnLoc, baby);
-        this.text = text;
+        this(text, spawnLoc, baby);
     }
 
     private void initializeHolograms() {

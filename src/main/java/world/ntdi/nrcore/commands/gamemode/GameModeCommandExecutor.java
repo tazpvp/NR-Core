@@ -2,6 +2,7 @@ package world.ntdi.nrcore.commands.gamemode;
 
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -26,7 +27,7 @@ public class GameModeCommandExecutor implements Executor {
         }
 
         player.setGameMode(gamemode);
-        player.sendMessage("Changed gamemode to " + gameModeName);
+        player.sendMessage(ChatColor.DARK_AQUA + "Gamemode: " + ChatColor.AQUA + gameModeName);
         return true;
 
     }

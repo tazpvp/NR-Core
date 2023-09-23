@@ -40,7 +40,7 @@ public class GameModeCommandExecutor implements Executor {
         }
 
         target.setGameMode(gamemode);
-        player.sendMessage(ChatColor.DARK_AQUA + "" + target + "'s Gamemode: " + ChatColor.AQUA + gameModeName);
+        player.sendMessage(ChatColor.DARK_AQUA + "" + target.getName() + "'s Gamemode: " + ChatColor.AQUA + gameModeName);
         return true;
 
     }

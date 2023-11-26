@@ -6,7 +6,7 @@
 
     <groupId>world.ntdi</groupId>
     <artifactId>nrcore</artifactId>
-    <version>2.6.1-SNAPSHOT</version>
+    <version>2.6.1</version>
     <packaging>jar</packaging>
 
     <name>NRCore</name>

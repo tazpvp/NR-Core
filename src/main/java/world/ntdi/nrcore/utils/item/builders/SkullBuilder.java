@@ -53,7 +53,7 @@ public class SkullBuilder extends ItemBuilder {
         final SkullMeta meta = (SkullMeta) stack.getItemMeta();
 
         if (texture != null) {
-            GameProfile profile = new GameProfile(UUID.randomUUID(), null);
+            GameProfile profile = new GameProfile(UUID.randomUUID(), "");
             profile.getProperties().put("textures", new Property("textures", this.texture));
             Field field;
             try {

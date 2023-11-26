@@ -2,6 +2,8 @@ package world.ntdi.nrcore.commands.gamemode;
 
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -25,8 +27,20 @@ public class GameModeCommandExecutor implements Executor {
             return true;
         }
 
-        player.setGameMode(gamemode);
-        player.sendMessage("Changed gamemode to " + gameModeName);
+        Player target;
+
+        if (args.length > 0) {
+            target = Bukkit.getPlayer(args[0]);
+            if (target == null) {
+                sender.sendMessage(ChatColor.RED + "That is not a player.");
+                return true;
+            }
+        } else {
+            target = player;
+        }
+
+        target.setGameMode(gamemode);
+        player.sendMessage(ChatColor.DARK_AQUA + "" + target.getName() + "'s Gamemode: " + ChatColor.AQUA + gameModeName);
         return true;
 
     }

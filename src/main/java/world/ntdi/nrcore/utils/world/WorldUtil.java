@@ -9,7 +9,7 @@ import world.ntdi.nrcore.NRCore;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
+import java.util.concurrent.Executors;
 
 public class WorldUtil {
     public World cloneWorld(String backup, String target) {
@@ -22,10 +22,16 @@ public class WorldUtil {
         File destDir = new File(Bukkit.getServer().getWorldContainer(), dee);
         try {
             FileUtils.copyDirectory(srcDir, destDir);
-            for (File file : destDir.listFiles())
-                if (file.isFile())
-                    if (file.getName().equalsIgnoreCase("uid.dat"))
-                        file.delete();
+            new BukkitRunnable() {
+                @Override
+                public void run() {
+                    for (File file : destDir.listFiles())
+                        if (file.isFile())
+                            if (file.getName().equalsIgnoreCase("uid.dat"))
+                                file.delete();
+                }
+            }.runTaskAsynchronously(NRCore.getInstance());
+
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -38,10 +44,14 @@ public class WorldUtil {
         File srcDir = new File(Bukkit.getServer().getWorldContainer(), worldName);
 
         Bukkit.unloadWorld(w, false);
-        try {
-            FileUtils.deleteDirectory(srcDir);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+
+        Executors.newCachedThreadPool().submit(() -> {
+            try {
+                FileUtils.deleteDirectory(srcDir);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            return null;
+        });
     }
 }

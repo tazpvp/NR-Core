@@ -37,7 +37,7 @@ public class EnderchestCommand extends NRCommand {
             final String targetName = args[0];
             final Player target = Bukkit.getPlayer(targetName);
             if (target != null) {
-                p.openInventory(target.getInventory());
+                p.openInventory(target.getEnderChest());
             }
         }
         return true;

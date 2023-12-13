@@ -138,6 +138,7 @@ public class ItemBuilder {
 
         if (this.glow) {
             meta.addEnchant(Enchantment.LUCK, 1, true);
+            meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         }
 
         if (this.unbreakable) {

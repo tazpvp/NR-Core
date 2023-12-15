@@ -27,7 +27,7 @@ public class SpeedCommand extends NRCommand {
 
         if (args.length < 1) {
             p.setWalkSpeed(0.2F);
-            p.setFlySpeed(0.2F);
+            p.setFlySpeed(0.1F);
             return true;
         }
 

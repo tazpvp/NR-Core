@@ -6,9 +6,11 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import world.ntdi.nrcore.NRCore;
 import world.ntdi.nrcore.utils.ChatUtils;
+import world.ntdi.nrcore.utils.command.simple.Completer;
 import world.ntdi.nrcore.utils.command.simple.Label;
 import world.ntdi.nrcore.utils.command.simple.NRCommand;
 
+import java.util.List;
 import java.util.UUID;
 import java.util.WeakHashMap;
 
@@ -55,5 +57,13 @@ public class MessageCommand extends NRCommand {
         lastMessage.put(receiver.getUniqueId(), sender.getUniqueId());
         sender.sendMessage(formatTo);
         receiver.sendMessage(formatFrom);
+    }
+
+    @Override
+    public List<String> complete(CommandSender sender, String[] args) {
+        if (args.length == 1) {
+            return Completer.onlinePlayers();
+        }
+        return List.of();
     }
 }

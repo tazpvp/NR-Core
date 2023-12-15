@@ -2,6 +2,7 @@ package world.ntdi.nrcore.commands.message;
 
 import lombok.NonNull;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import world.ntdi.nrcore.NRCore;
@@ -57,6 +58,10 @@ public class MessageCommand extends NRCommand {
         lastMessage.put(receiver.getUniqueId(), sender.getUniqueId());
         sender.sendMessage(formatTo);
         receiver.sendMessage(formatFrom);
+
+        if (!MessageCommand.lastMessage.containsKey(receiver.getUniqueId())) {
+            receiver.sendMessage(ChatColor.YELLOW + "(!) To respond to this message, type /re <message>");
+        }
     }
 
     @Override

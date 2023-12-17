@@ -3,6 +3,7 @@ package world.ntdi.nrcore.utils.command.simple;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
+import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import world.ntdi.nrcore.utils.config.ConfigUtils;
 
@@ -110,7 +111,7 @@ public class NRCommand implements Completer, Executor {
         }
     }
 
-    private final String findOverlappingSubcommand(@NonNull final String... aliases) {
+    private String findOverlappingSubcommand(@NonNull final String... aliases) {
         for (String alias : aliases) {
             if (this.subcommands.containsKey(alias)) {
                 return alias;
@@ -120,11 +121,11 @@ public class NRCommand implements Completer, Executor {
     }
 
     protected void sendNoPermission(CommandSender sender) {
-        sender.sendMessage(getLabel().getPermission());
+        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', getLabel().getPermission()));
     }
 
     protected void sendIncorrectUsage(CommandSender sender, String correctUsage) {
-        sender.sendMessage(ConfigUtils.incorrectUsage + correctUsage);
+        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ConfigUtils.incorrectUsage + correctUsage));
     }
 
     protected void sendIncorrectUsage(CommandSender sender) {
